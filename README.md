@@ -1,36 +1,54 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Pixelrift — Build Your Business Website Instantly
 
-## Getting Started
+Pixelrift is a premium SaaS-style platform for selling and booking high-quality, ready-made web development projects. Designed for speed, aesthetics, and high conversion.
 
-First, run the development server:
+## 🚀 Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Premium SaaS UI**: Built with Next.js 15, Tailwind CSS, and Framer Motion for a sleek, dark-themed experience.
+- **Project Catalog**: Filterable grid of curated web solutions, including "Live Project" showcases.
+- **Conversion-Focused Pricing**: Simplifed pricing plans (Basic & Premium) clearly displayed on the home page.
+- **Interactive Booking Flow**: A unified, mobile-optimized booking system with plan selection and auto-fill capabilities.
+- **Responsive Design**: Fully optimized for Mobile, Tablet, and Desktop devices with a modern slide-in navigation menu.
+- **Backend Integration**: Automated booking storage in MongoDB and admin email notifications via Nodemailer.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🛠️ Technology Stack
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+- **Frontend**: Next.js (App Router), Tailwind CSS, Framer Motion, Lucide Icons.
+- **Backend**: Next.js API Routes, MongoDB (Mongoose).
+- **Email**: Nodemailer with Gmail/Custom SMTP support.
+- **Styling**: Modern glassmorphism and custom animation utilities.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📦 Getting Started
 
-## Learn More
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/lUCIFER94008/Pixelrift.git
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+2. **Install dependencies**:
+   ```bash
+   npm install
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+3. **Set up environment variables**:
+   Create a `.env.local` file with:
+   ```env
+   MONGODB_URI=your_mongodb_connection_string
+   EMAIL_SERVICE=gmail
+   EMAIL_USER=your_email@gmail.com
+   EMAIL_PASS=your_app_password
+   ADMIN_EMAIL=admin@example.com
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+4. **Run development server**:
+   ```bash
+   npm run dev
+   ```
 
-## Deploy on Vercel
+## 📄 Pages
+- ` / ` - Home page with Hero, Why Us, and Pricing.
+- ` /projects ` - Full project catalog with category filtering.
+- ` /projects/[id] ` - Detailed project view and booking flow.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🛡️ License
+Designed and Developed by **R7** for Pixelrift.
