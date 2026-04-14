@@ -38,15 +38,24 @@ const BookingModal = ({ isOpen, onClose, project, preSelectedPlan = 'BASIC' }) =
     e.preventDefault();
     setLoading(true);
     try {
-      const response = await axios.post('/api/book', {
+      const resp = await axios.post('/api/book', {
         ...formData,
         projectName: project?.title || 'General Platform Inquiry',
         plan: plans[selectedPlan].name,
         price: plans[selectedPlan].price
       });
-      if (response.data.success) {
+      
+      if (resp.data.success) {
         toast.success("Booking Request Sent Successfully!");
-        onClose();
+        
+        // Short delay to let the toast be seen, then redirect
+        setTimeout(() => {
+          if (resp.data.whatsappUrl) {
+            window.location.href = resp.data.whatsappUrl;
+          }
+          onClose();
+        }, 1500);
+
         setFormData({ name: '', email: '', message: '' });
       }
     } catch (error) {

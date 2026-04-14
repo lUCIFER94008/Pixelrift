@@ -3,14 +3,14 @@ import mongoose from 'mongoose';
 import { sendEmail } from '@/lib/mailer';
 import { NextResponse } from 'next/server';
 
-// Define the Booking Schema directly or import it
+// Define the Booking Schema
 const bookingSchema = new mongoose.Schema({
-  name: String,
-  email: String,
-  projectName: String,
-  plan: String,
-  price: String,
-  message: String,
+  name: { type: String, required: true },
+  email: { type: String, required: true },
+  projectName: { type: String, required: true },
+  plan: { type: String, required: true },
+  price: { type: String, required: true },
+  message: { type: String, required: true },
   createdAt: { type: Date, default: Date.now },
 });
 
@@ -21,8 +21,8 @@ export async function POST(req) {
     const body = await req.json();
     const { name, email, projectName, plan, price, message } = body;
 
+    // 1. Connect and Save to MongoDB
     await connectDB();
-
     const newBooking = new Booking({
       name,
       email,
@@ -31,28 +31,68 @@ export async function POST(req) {
       price,
       message,
     });
-
     await newBooking.save();
 
-    // Send Email
-    await sendEmail({
-      subject: `New Booking Request: ${projectName}`,
-      html: `
-        <div style="font-family: sans-serif; padding: 20px; border: 1px solid #eee; border-radius: 10px;">
-          <h2 style="color: #6366f1;">New Project Booking</h2>
-          <p><strong>Name:</strong> ${name}</p>
-          <p><strong>Email:</strong> ${email}</p>
-          <p><strong>Project:</strong> ${projectName}</p>
-          <p><strong>Plan:</strong> ${plan}</p>
-          <p><strong>Price:</strong> ${price}</p>
-          <p><strong>Message:</strong> ${message}</p>
-        </div>
-      `,
-    });
+    // 2. Send Email to Admin
+    try {
+      await sendEmail({
+        subject: `🚀 New Booking: ${projectName} (${plan})`,
+        html: `
+          <div style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 30px; background-color: #0f172a; color: #f8fafc; border-radius: 12px;">
+            <h2 style="color: #6366f1; margin-bottom: 20px; font-size: 24px; border-bottom: 2px solid #1e293b; padding-bottom: 10px;">New Project Booking</h2>
+            <div style="margin-bottom: 15px;">
+              <strong style="color: #94a3b8; display: block; font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em;">Client Name</strong>
+              <span style="font-size: 16px;">${name}</span>
+            </div>
+            <div style="margin-bottom: 15px;">
+              <strong style="color: #94a3b8; display: block; font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em;">Contact Email</strong>
+              <span style="font-size: 16px;">${email}</span>
+            </div>
+            <div style="margin-bottom: 15px;">
+              <strong style="color: #94a3b8; display: block; font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em;">Selected Project</strong>
+              <span style="font-size: 16px;">${projectName}</span>
+            </div>
+            <div style="margin-bottom: 15px;">
+              <strong style="color: #94a3b8; display: block; font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em;">Plan Chosen</strong>
+              <span style="font-size: 16px; color: #6366f1; font-weight: bold;">${plan} (${price})</span>
+            </div>
+            <div style="margin-top: 25px; padding: 20px; background-color: #1e293b; border-radius: 8px;">
+              <strong style="color: #94a3b8; display: block; font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px;">Message</strong>
+              <p style="margin: 0; line-height: 1.6;">${message}</p>
+            </div>
+            <p style="margin-top: 30px; font-size: 10px; color: #475569; text-align: center;">Pixelrift Booking System • Automated Notification</p>
+          </div>
+        `,
+      });
+    } catch (emailErr) {
+      console.error('Email Notification Error:', emailErr);
+      // We continue even if email fails, as long as DB is saved
+    }
 
-    return NextResponse.json({ success: true, message: 'Booking sent successfully!' }, { status: 201 });
+    // 3. Generate WhatsApp Link
+    const phone = process.env.WHATSAPP_PHONE || '91XXXXXXXXXX';
+    const whatsappMsg = `Hello Pixelrift! I'm interested in booking a project.
+    
+*Project:* ${projectName}
+*Plan:* ${plan} (${price})
+*Name:* ${name}
+*Email:* ${email}
+*Message:* ${message}`;
+
+    const encodedMsg = encodeURIComponent(whatsappMsg);
+    const whatsappUrl = `https://wa.me/${phone}?text=${encodedMsg}`;
+
+    return NextResponse.json({ 
+      success: true, 
+      message: 'Booking saved and notifications sent.',
+      whatsappUrl 
+    }, { status: 201 });
+
   } catch (error) {
-    console.error('API Error:', error);
-    return NextResponse.json({ success: false, message: 'Failed to process booking.' }, { status: 500 });
+    console.error('Booking API Error:', error);
+    return NextResponse.json({ 
+      success: false, 
+      message: 'Server error processing booking.' 
+    }, { status: 500 });
   }
 }
