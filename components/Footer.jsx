@@ -9,6 +9,7 @@ const Footer = () => {
       <div className="container mx-auto px-6 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 lg:gap-8">
           {/* Column 1: Logo & Description */}
+          <div className="col-span-1">
             <div className="flex items-center gap-2.5 mb-6">
               <img
                 src="/logo.png"

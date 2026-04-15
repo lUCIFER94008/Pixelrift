@@ -24,8 +24,8 @@ body {
 /* Custom Glassmorphism Utility */
 .glass {
   background: rgba(30, 41, 59, 0.7);
-  backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
 }
@@ -80,8 +80,8 @@ body {
   position: relative;
   overflow: hidden;
   background: rgba(30, 41, 59, 0.6);
-  backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 2rem;
   padding: 2rem;
@@ -250,8 +250,8 @@ body {
 .branding-plan-highlight {
   border: 2px solid #6366f1;
   background: rgba(99, 102, 241, 0.06);
-  backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
   box-shadow:
     0 0 60px -15px rgba(99, 102, 241, 0.35),
     0 8px 32px rgba(0, 0, 0, 0.3);
