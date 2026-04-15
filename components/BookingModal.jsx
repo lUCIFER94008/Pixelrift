@@ -37,33 +37,61 @@ const BookingModal = ({ isOpen, onClose, project, preSelectedPlan = 'BASIC' }) =
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
+    const { name, email, phone, message } = formData;
+    
+    // Validation
+    if (!name || !email || !phone || !message) {
+      toast.error("Please fill all fields!");
+      return;
+    }
+
     setLoading(true);
     try {
-      const resp = await axios.post('/api/book', {
-        name: formData.name,
-        email: formData.email,
-        phone: formData.phone,
-        message: formData.message,
+      // 1. Record lead to backend (keeping for record purposes)
+      await axios.post('/api/book', {
+        name,
+        email,
+        phone,
+        message,
         projectName: project?.title || 'General Platform Inquiry',
         plan: plans[selectedPlan].name,
         price: plans[selectedPlan].price
       });
       
-      if (resp.data.success) {
-        toast.success("Booking Request Sent Successfully!");
-        
-        // Short delay to let the toast be seen, then redirect
-        setTimeout(() => {
-          if (resp.data.whatsappUrl) {
-            window.open(resp.data.whatsappUrl, '_blank');
-          }
-          onClose();
-        }, 1500);
+      toast.success("Recording lead and opening WhatsApp...");
+      
+      // 2. Format WhatsApp Message
+      const text = `Hello Pixelrift 👋
 
+I’m interested in your website service.
+
+Name: ${name}
+Email: ${email}
+Phone: ${phone}
+Plan: ${plans[selectedPlan].name}
+Message: ${message}`;
+
+      const encodedText = encodeURIComponent(text);
+      // Using number as requested
+      const url = `https://wa.me/91XXXXXXXXXX?text=${encodedText}`;
+
+      // 3. Open WhatsApp
+      window.open(url, "_blank");
+      
+      // 4. Cleanup
+      setTimeout(() => {
+        onClose();
         setFormData({ name: '', email: '', phone: '', message: '' });
-      }
+      }, 1000);
+
     } catch (error) {
-      toast.error("Failed to send booking. Please try again.");
+      console.error("Booking Error:", error);
+      // Fallback: If backend fails, still allow WhatsApp redirect
+      const text = `Hello Pixelrift 👋\n\nI’m interested in your website service.\n\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\nPlan: ${plans[selectedPlan].name}\nMessage: ${message}`;
+      const url = `https://wa.me/91XXXXXXXXXX?text=${encodeURIComponent(text)}`;
+      window.open(url, "_blank");
+      toast.success("Proceeding via WhatsApp...");
     } finally {
       setLoading(false);
     }
