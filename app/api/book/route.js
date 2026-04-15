@@ -7,6 +7,8 @@ import { NextResponse } from 'next/server';
 const bookingSchema = new mongoose.Schema({
   name: { type: String, required: true },
   email: { type: String, required: true },
+  phone: { type: String, default: '' },
+  budget: { type: String, default: '' },
   projectName: { type: String, required: true },
   plan: { type: String, required: true },
   price: { type: String, required: true },
@@ -19,13 +21,15 @@ const Booking = mongoose.models.Booking || mongoose.model('Booking', bookingSche
 export async function POST(req) {
   try {
     const body = await req.json();
-    const { name, email, projectName, plan, price, message } = body;
+    const { name, email, phone, budget, projectName, plan, price, message } = body;
 
     // 1. Connect and Save to MongoDB
     await connectDB();
     const newBooking = new Booking({
       name,
       email,
+      phone: phone || '',
+      budget: budget || '',
       projectName,
       plan,
       price,
@@ -48,6 +52,14 @@ export async function POST(req) {
               <strong style="color: #94a3b8; display: block; font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em;">Contact Email</strong>
               <span style="font-size: 16px;">${email}</span>
             </div>
+            ${phone ? `<div style="margin-bottom: 15px;">
+              <strong style="color: #94a3b8; display: block; font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em;">Phone Number</strong>
+              <span style="font-size: 16px;">${phone}</span>
+            </div>` : ''}
+            ${budget ? `<div style="margin-bottom: 15px;">
+              <strong style="color: #94a3b8; display: block; font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em;">Budget</strong>
+              <span style="font-size: 16px; color: #22d3ee; font-weight: bold;">${budget}</span>
+            </div>` : ''}
             <div style="margin-bottom: 15px;">
               <strong style="color: #94a3b8; display: block; font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em;">Selected Project</strong>
               <span style="font-size: 16px;">${projectName}</span>
@@ -70,17 +82,17 @@ export async function POST(req) {
     }
 
     // 3. Generate WhatsApp Link
-    const phone = process.env.WHATSAPP_PHONE || '91XXXXXXXXXX';
+    const whatsappPhone = process.env.WHATSAPP_PHONE || '91XXXXXXXXXX';
     const whatsappMsg = `Hello Pixelrift! I'm interested in booking a project.
     
 *Project:* ${projectName}
 *Plan:* ${plan} (${price})
 *Name:* ${name}
-*Email:* ${email}
-*Message:* ${message}`;
+*Email:* ${email}${budget ? `\n*Budget:* ${budget}` : ''}${phone ? `\n*Phone:* ${phone}` : ''}
+*Requirements:* ${message}`;
 
     const encodedMsg = encodeURIComponent(whatsappMsg);
-    const whatsappUrl = `https://wa.me/${phone}?text=${encodedMsg}`;
+    const whatsappUrl = `https://wa.me/${whatsappPhone}?text=${encodedMsg}`;
 
     return NextResponse.json({ 
       success: true, 

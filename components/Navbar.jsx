@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Box, Menu, X, ArrowRight, Home, LayoutGrid, Zap } from 'lucide-react';
+import { Box, Menu, X, ArrowRight, Home, LayoutGrid, Zap, Palette } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const Navbar = () => {
@@ -17,6 +17,7 @@ const Navbar = () => {
   const navLinks = [
     { name: 'Home', href: '/', icon: <Home className="w-4 h-4" /> },
     { name: 'Projects', href: '/projects', icon: <LayoutGrid className="w-4 h-4" /> },
+    { name: 'Branding', href: '/branding', icon: <Palette className="w-4 h-4" /> },
   ];
 
   return (

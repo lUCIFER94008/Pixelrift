@@ -1,10 +1,11 @@
 "use client";
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useParams } from 'next/navigation';
 import { motion } from 'framer-motion';
-import { CheckCircle2, Globe, Cpu, ArrowLeft, Sparkles } from 'lucide-react';
+import { CheckCircle2, Globe, Cpu, ArrowLeft, Sparkles, Palette } from 'lucide-react';
 import Link from 'next/link';
 import BookingModal from '@/components/BookingModal';
+import CustomizationForm from '@/components/CustomizationForm';
 
 const projectsData = [
   {
@@ -71,6 +72,8 @@ export default function ProjectDetails() {
   const { id } = useParams();
   const [project, setProject] = useState(null);
   const [showBooking, setShowBooking] = useState(false);
+  const [showCustomForm, setShowCustomForm] = useState(false);
+  const customFormRef = useRef(null);
 
   useEffect(() => {
     const foundProject = projectsData.find(p => p.id === parseInt(id));
@@ -180,8 +183,21 @@ export default function ProjectDetails() {
                     Start Building Now
                   </button>
                 )}
-                <button className="w-full glass py-4 sm:py-5 rounded-xl sm:rounded-2xl text-white font-bold uppercase text-[10px] sm:text-xs tracking-[0.1em] hover:bg-white/10 transition-all border border-white/5">
-                  Request Customization
+                <button 
+                  onClick={() => {
+                    setShowCustomForm(!showCustomForm);
+                    if (!showCustomForm) {
+                      setTimeout(() => {
+                        customFormRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                      }, 100);
+                    }
+                  }}
+                  className={`w-full glass py-4 sm:py-5 rounded-xl sm:rounded-2xl text-white font-bold uppercase text-[10px] sm:text-xs tracking-[0.1em] hover:bg-white/10 transition-all border ${
+                    showCustomForm ? 'border-primary/40 bg-primary/10' : 'border-white/5'
+                  } flex items-center justify-center gap-2`}
+                >
+                  <Palette className="w-4 h-4" />
+                  {showCustomForm ? 'Hide Form' : 'Request Customization'}
                 </button>
               </div>
 
@@ -190,6 +206,19 @@ export default function ProjectDetails() {
             </div>
           </motion.div>
         </div>
+
+        {/* Customization Form Section */}
+        {showCustomForm && (
+          <motion.div
+            ref={customFormRef}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="mt-12 sm:mt-16 max-w-3xl mx-auto"
+          >
+            <CustomizationForm projectName={project.title} />
+          </motion.div>
+        )}
       </div>
 
       <BookingModal 
