@@ -74,7 +74,7 @@ Message: ${message}`;
 
       const encodedText = encodeURIComponent(text);
       // Using number as requested
-      const url = `https://wa.me/91XXXXXXXXXX?text=${encodedText}`;
+      const url = `https://wa.me/919400812373?text=${encodedText}`;
 
       // 3. Open WhatsApp
       window.open(url, "_blank");
@@ -89,7 +89,7 @@ Message: ${message}`;
       console.error("Booking Error:", error);
       // Fallback: If backend fails, still allow WhatsApp redirect
       const text = `Hello Pixelrift 👋\n\nI’m interested in your website service.\n\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\nPlan: ${plans[selectedPlan].name}\nMessage: ${message}`;
-      const url = `https://wa.me/91XXXXXXXXXX?text=${encodeURIComponent(text)}`;
+      const url = `https://wa.me/919400812373?text=${encodeURIComponent(text)}`;
       window.open(url, "_blank");
       toast.success("Proceeding via WhatsApp...");
     } finally {
