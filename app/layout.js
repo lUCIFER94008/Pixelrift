@@ -15,7 +15,7 @@ const poppins = Poppins({
   weight: ["400", "600", "700", "900"],
 });
 
-const LOGO_URL = "https://res.cloudinary.com/dpmpefw2p/image/upload/v1/U2NyZWVuc2hvdF8yMDI2LTA0LTE1XzEyMTAyM195YXhtdDU";
+const LOGO_URL = "https://res.cloudinary.com/dpmpefw2p/image/upload/v1/U2NyZWVuc2hvdF8yMDI2LTA0LTE1XzEyMTAyM195YXhtdDU.png";
 
 export const metadata = {
   title: "Pixelrift — Build Your Business Website Instantly",

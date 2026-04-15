@@ -1,5 +1,6 @@
+"use client";
 import React from 'react';
-import { Box, Mail, ExternalLink } from 'lucide-react';
+import { Mail, ExternalLink } from 'lucide-react';
 import Link from 'next/link';
 
 const Footer = () => {
@@ -9,10 +10,13 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 lg:gap-8">
           {/* Column 1: Logo & Description */}
           <div className="col-span-1">
-            <div className="flex items-center gap-2 mb-6">
-              <div className="p-2 bg-gradient rounded-lg">
-                <Box className="text-white w-5 h-5" />
-              </div>
+            <div className="flex items-center gap-2.5 mb-6">
+              <img
+                src="https://res.cloudinary.com/dpmpefw2p/image/upload/v1/U2NyZWVuc2hvdF8yMDI2LTA0LTE1XzEyMTAyM195YXhtdDU.png"
+                alt="Pixelrift Logo"
+                className="h-8 w-auto object-contain rounded-lg"
+                onError={(e) => e.target.style.display = "none"}
+              />
               <span className="text-xl font-bold text-white uppercase tracking-wider">
                 Pixel<span className="text-gradient">rift</span>
               </span>
@@ -29,6 +33,7 @@ const Footer = () => {
             <ul className="space-y-3 text-slate-400 text-sm">
               <li><Link href="/" className="hover:text-primary transition-colors flex items-center gap-1">Home</Link></li>
               <li><Link href="/projects" className="hover:text-primary transition-colors flex items-center gap-1">Projects</Link></li>
+              <li><Link href="/branding" className="hover:text-primary transition-colors flex items-center gap-1">Branding</Link></li>
               <li><Link href="#pricing" className="hover:text-primary transition-colors flex items-center gap-1">Pricing</Link></li>
               <li><a href="#" className="hover:text-primary transition-colors flex items-center gap-1">Support</a></li>
             </ul>
