@@ -22,11 +22,11 @@ const Footer = () => {
               </span>
             </div>
             <p className="text-slate-400 max-w-sm text-sm leading-relaxed mb-6">
-              Premium ready-made web solutions for businesses that want to scale fast. 
+              Premium ready-made web solutions for businesses that want to scale fast.
               Modern design, full support, and instant deployment.
             </p>
           </div>
-          
+
           {/* Column 2: Quick Links */}
           <div>
             <h4 className="text-white font-bold mb-6 text-sm uppercase tracking-widest">Quick Links</h4>
@@ -44,9 +44,9 @@ const Footer = () => {
             <h4 className="text-white font-bold mb-6 text-sm uppercase tracking-widest">Work Done</h4>
             <ul className="space-y-3 text-slate-400 text-sm">
               <li>
-                <a 
-                  href="https://bismi-iota.vercel.app/" 
-                  target="_blank" 
+                <a
+                  href="https://bismi-iota.vercel.app/"
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-primary transition-all flex items-center gap-2 group border-b border-transparent hover:border-primary/30 w-fit"
                 >
@@ -54,9 +54,9 @@ const Footer = () => {
                 </a>
               </li>
               <li>
-                <a 
-                  href="https://vintage-vault-in.vercel.app/" 
-                  target="_blank" 
+                <a
+                  href="https://vintage-vault-in.vercel.app/"
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-primary transition-all flex items-center gap-2 group border-b border-transparent hover:border-primary/30 w-fit"
                 >
@@ -76,21 +76,21 @@ const Footer = () => {
               <a href="#" className="hover:text-primary transition-colors flex items-center gap-2">
                 LinkedIn
               </a>
-              <a href="mailto:hello@pixelrift.com" className="hover:text-primary transition-colors flex items-center gap-2">
-                <Mail className="w-4 h-4" /> hello@pixelrift.com
+              <a href="mailto:mohammedrizwan9c@gmail.com" className="hover:text-primary transition-colors flex items-center gap-2">
+                <Mail className="w-4 h-4" /> mohammedrizwan9c@gmail.com
               </a>
             </div>
           </div>
         </div>
-        
+
         {/* Bottom Bar */}
         <div className="border-t border-white/5 mt-16 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-slate-500 text-xs font-medium">
           <p>© 2026 Pixelrift. All rights reserved.</p>
           <p>
             Designed by{' '}
-            <a 
-              href="https://r7-olive.vercel.app/" 
-              target="_blank" 
+            <a
+              href="https://r7-olive.vercel.app/"
+              target="_blank"
               rel="noopener noreferrer"
               className="text-slate-300 hover:text-primary transition-colors font-bold tracking-wider"
             >
