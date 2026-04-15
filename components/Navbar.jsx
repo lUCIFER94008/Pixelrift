@@ -27,15 +27,14 @@ const Navbar = () => {
       }`}>
         <div className="container mx-auto px-4 md:px-8 lg:px-12 flex justify-between items-center">
           <Link href="/" className="flex items-center gap-2.5 group relative z-[70]">
-            <motion.img
-              src="https://res.cloudinary.com/dpmpefw2p/image/upload/v1/U2NyZWVuc2hvdF8yMDI2LTA0LTE1XzEyMTAyM195YXhtdDU.png"
+            <img
+              src="/logo.png"
               alt="Pixelrift Logo"
-              whileHover={{ scale: 1.08 }}
-              onError={(e) => e.target.style.display = "none"}
-              className="h-8 sm:h-10 w-auto object-contain rounded-lg drop-shadow-[0_0_8px_rgba(99,102,241,0.4)] transition-all duration-300"
+              className="h-8 md:h-10 w-auto object-contain transition-all duration-300"
+              style={{ filter: "drop-shadow(0 0 8px rgba(139, 92, 246, 0.6))" }}
             />
-            <span className="text-2xl font-black text-white tracking-tighter">
-              Pixel<span className="text-gradient">rift</span>
+            <span className="text-xl md:text-2xl font-black text-white tracking-tighter">
+              Pixel<span className="text-primary">rift</span>
             </span>
           </Link>
 

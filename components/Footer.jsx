@@ -9,16 +9,15 @@ const Footer = () => {
       <div className="container mx-auto px-6 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 lg:gap-8">
           {/* Column 1: Logo & Description */}
-          <div className="col-span-1">
             <div className="flex items-center gap-2.5 mb-6">
               <img
-                src="https://res.cloudinary.com/dpmpefw2p/image/upload/v1/U2NyZWVuc2hvdF8yMDI2LTA0LTE1XzEyMTAyM195YXhtdDU.png"
+                src="/logo.png"
                 alt="Pixelrift Logo"
-                className="h-8 w-auto object-contain rounded-lg"
-                onError={(e) => e.target.style.display = "none"}
+                className="h-8 w-auto object-contain"
+                style={{ filter: "drop-shadow(0 0 6px rgba(139, 92, 246, 0.5))" }}
               />
               <span className="text-xl font-bold text-white uppercase tracking-wider">
-                Pixel<span className="text-gradient">rift</span>
+                Pixel<span className="text-primary">rift</span>
               </span>
             </div>
             <p className="text-slate-400 max-w-sm text-sm leading-relaxed mb-6">
