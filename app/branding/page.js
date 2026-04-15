@@ -93,6 +93,49 @@ const showcaseProjects = [
   },
 ];
 
+const colorPalettes = [
+  {
+    name: "Modern Purple",
+    colors: [
+      { hex: "#6C63FF", light: false },
+      { hex: "#8B5CF6", light: false },
+      { hex: "#A78BFA", light: false },
+      { hex: "#C4B5FD", light: true },
+      { hex: "#EDE9FE", light: true },
+    ],
+  },
+  {
+    name: "Luxury Gold",
+    colors: [
+      { hex: "#D4AF37", light: false },
+      { hex: "#FFD700", light: true },
+      { hex: "#FFF5CC", light: true },
+      { hex: "#1F2937", light: false },
+      { hex: "#111827", light: false },
+    ],
+  },
+  {
+    name: "Dark Tech",
+    colors: [
+      { hex: "#0F172A", light: false },
+      { hex: "#1E293B", light: false },
+      { hex: "#334155", light: false },
+      { hex: "#6366F1", light: false },
+      { hex: "#22D3EE", light: false },
+    ],
+  },
+  {
+    name: "Minimal Clean",
+    colors: [
+      { hex: "#FFFFFF", light: true },
+      { hex: "#F1F5F9", light: true },
+      { hex: "#E2E8F0", light: true },
+      { hex: "#64748B", light: false },
+      { hex: "#0F172A", light: false },
+    ],
+  },
+];
+
 /* ─────────────── FADE-IN HELPER ─────────────── */
 
 const fadeUp = {
@@ -232,6 +275,79 @@ export default function BrandingPage() {
               </motion.div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* ══════════ 2.5 COLOR PALETTES ══════════ */}
+      <section className="py-20 sm:py-32 relative border-t border-white/5">
+        <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-12">
+          <div className="text-center mb-16 sm:mb-24">
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
+              <span className="text-primary font-black text-[10px] sm:text-xs uppercase tracking-[0.3em] mb-4 block">
+                Design Systems
+              </span>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white mb-4">Color Palettes We Create</h2>
+              <p className="text-slate-400 text-sm sm:text-base max-w-xl mx-auto">
+                Carefully crafted color systems that define your brand identity.
+              </p>
+            </motion.div>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+            {colorPalettes.map((palette, i) => (
+              <motion.div
+                key={i}
+                custom={i}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={fadeUp}
+                className="glass rounded-2xl sm:rounded-3xl border-white/5 overflow-hidden group cursor-default hover:scale-[1.03] hover:border-primary/20 transition-all duration-500 hover:shadow-[0_0_40px_-10px_rgba(99,102,241,0.25)]"
+              >
+                {/* Color Swatches */}
+                <div className="flex h-28 sm:h-36">
+                  {palette.colors.map((c, j) => (
+                    <div
+                      key={j}
+                      className="flex-1 transition-all duration-500 group-hover:flex-[1.3] hover:!flex-[2]"
+                      style={{ backgroundColor: c.hex }}
+                    />
+                  ))}
+                </div>
+
+                {/* Palette Info */}
+                <div className="p-5 sm:p-6">
+                  <h4 className="text-white font-bold text-sm sm:text-base mb-3 tracking-tight">{palette.name}</h4>
+                  <div className="flex flex-wrap gap-1.5">
+                    {palette.colors.map((c, j) => (
+                      <span
+                        key={j}
+                        className="text-[9px] sm:text-[10px] font-mono font-bold px-2 py-1 rounded-md bg-white/[0.05] text-slate-400 border border-white/[0.06] select-all hover:bg-white/10 hover:text-white transition-colors cursor-text"
+                      >
+                        {c.hex}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* CTA */}
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeUp}
+            className="text-center mt-12 sm:mt-16"
+          >
+            <a
+              href="#contact"
+              className="inline-flex items-center gap-3 bg-gradient text-white px-8 sm:px-10 py-3.5 sm:py-4 rounded-xl sm:rounded-2xl text-xs sm:text-sm font-bold hover:opacity-90 transition-all group shadow-lg shadow-primary/20"
+            >
+              <Palette className="w-4 h-4" /> Request Custom Branding <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </a>
+          </motion.div>
         </div>
       </section>
 

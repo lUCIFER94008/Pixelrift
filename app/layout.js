@@ -15,9 +15,16 @@ const poppins = Poppins({
   weight: ["400", "600", "700", "900"],
 });
 
+const LOGO_URL = "https://res.cloudinary.com/dpmpefw2p/image/upload/v1/U2NyZWVuc2hvdF8yMDI2LTA0LTE1XzEyMTAyM195YXhtdDU";
+
 export const metadata = {
   title: "Pixelrift — Build Your Business Website Instantly",
   description: "Premium ready-made web solutions with custom design and full support. Build your business website instantly with Pixelrift.",
+  icons: {
+    icon: LOGO_URL,
+    shortcut: LOGO_URL,
+    apple: LOGO_URL,
+  },
 };
 
 export default function RootLayout({ children }) {
