@@ -25,7 +25,7 @@ const Navbar = () => {
       <nav className={`fixed top-0 left-0 right-0 z-[60] transition-all duration-300 ${
         scrolled ? 'py-4 bg-dark/80 backdrop-blur-xl border-b border-white/5' : 'py-6 bg-transparent'
       }`}>
-        <div className="container mx-auto px-4 md:px-8 lg:px-12 flex justify-between items-center">
+        <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12 flex justify-between items-center w-full">
           <Link href="/" className="flex items-center gap-2.5 group relative z-[70]">
             <img
               src="/logo.png"

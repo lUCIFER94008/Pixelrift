@@ -85,8 +85,8 @@ export default function ProjectDetails() {
   if (!project) return <div className="pt-40 text-center text-white font-black text-2xl">Project not found.</div>;
 
   return (
-    <div className="pt-24 sm:pt-32 pb-16 sm:pb-24 min-h-screen">
-      <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-12">
+    <div className="py-16 md:py-24 min-h-screen">
+      <div>
         <Link 
           href="/projects"
           className="inline-flex items-center gap-2 text-slate-500 hover:text-white mb-8 sm:mb-12 transition-colors group text-sm font-bold uppercase tracking-widest"
@@ -113,8 +113,11 @@ export default function ProjectDetails() {
               <div className="flex items-center gap-3 text-primary text-[10px] sm:text-xs font-black uppercase tracking-[0.3em] mb-4">
                 <Sparkles className="w-4 h-4" /> Comprehensive Solution
               </div>
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white mb-4 sm:mb-6 tracking-tighter leading-tight">{project.title}</h1>
-              <p className="text-slate-400 text-sm sm:text-lg leading-relaxed mb-8 sm:mb-10 font-medium">
+              <h1 className="text-4xl md:text-6xl font-bold leading-tight text-white mb-6">
+                {project.title}
+              </h1>
+              
+              <p className="text-gray-400 leading-relaxed text-lg mb-10">
                 {project.description}
               </p>
 

@@ -29,7 +29,9 @@ export default function RootLayout({ children }) {
       <body className={`${inter.variable} ${poppins.variable} antialiased bg-dark`}>
         <Toaster position="top-right" />
         <Navbar />
-        {children}
+        <main className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12">
+          {children}
+        </main>
         <Footer />
       </body>
     </html>

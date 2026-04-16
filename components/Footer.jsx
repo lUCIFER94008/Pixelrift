@@ -6,7 +6,7 @@ import Link from 'next/link';
 const Footer = () => {
   return (
     <footer className="glass border-t-0 py-16 mt-20 relative overflow-hidden">
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 lg:gap-8">
           {/* Column 1: Logo & Description */}
           <div className="col-span-1">
@@ -21,7 +21,7 @@ const Footer = () => {
                 Pixel<span className="text-primary">rift</span>
               </span>
             </div>
-            <p className="text-slate-400 max-w-sm text-sm leading-relaxed mb-6">
+            <p className="text-gray-400 max-w-sm text-sm leading-relaxed mb-6">
               Premium ready-made web solutions for businesses that want to scale fast.
               Modern design, full support, and instant deployment.
             </p>

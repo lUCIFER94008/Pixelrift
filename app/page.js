@@ -16,30 +16,31 @@ export default function Home() {
   return (
     <div className="pb-16 sm:pb-24">
       {/* Hero Section */}
-      <section className="relative pt-32 sm:pt-40 pb-20 sm:pb-32 overflow-hidden border-b border-white/5">
-        <div className="container mx-auto px-4 sm:px-6 md:px-8 text-center relative z-10">
+      <section className="py-16 md:py-24 relative overflow-hidden border-b border-white/5">
+        <div className="text-center relative z-10">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="max-w-4xl mx-auto"
           >
-            <span className="inline-block px-4 py-1.5 glass rounded-full text-primary text-[9px] sm:text-[10px] font-black uppercase tracking-[0.2em] mb-6 sm:mb-8">
+            <span className="inline-block px-4 py-1.5 glass rounded-full text-primary text-[10px] font-black uppercase tracking-[0.2em] mb-8">
               Revolutionizing Digital Presence
             </span>
-            <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white mb-6 sm:mb-8 leading-[1.1] tracking-tighter">
-              Build Your <br />
-              <span className="text-gradient">Business Website</span> <br className="hidden sm:block" />
-              Instantly
+            
+            <h1 className="text-4xl md:text-6xl font-bold leading-tight text-white mb-8">
+              Build Your <span className="text-gradient">Business Website</span> Instantly
             </h1>
-            <p className="text-sm sm:text-lg md:text-xl text-slate-400 mb-10 sm:mb-12 max-w-2xl mx-auto leading-relaxed font-medium px-4 sm:px-0">
+
+            <p className="text-gray-400 leading-relaxed text-lg md:text-xl mb-12 max-w-2xl mx-auto">
               Premium ready-made web solutions with custom design and full support. 
               Skip the backlog and launch your business with a world-class digital product.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center mt-4 px-4 sm:px-0">
-              <Link href="/projects" className="w-full sm:w-auto bg-gradient text-white px-8 sm:px-12 py-4 sm:py-5 rounded-xl sm:rounded-2xl text-base sm:text-lg font-bold hover:opacity-95 transition-all flex items-center justify-center gap-3 group shadow-xl shadow-primary/20">
-                Explore Projects <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+
+            <div className="flex flex-col sm:flex-row gap-6 justify-center">
+              <Link href="/projects" className="bg-gradient text-white px-10 py-5 rounded-2xl text-lg font-bold hover:opacity-95 transition-all flex items-center justify-center gap-3 shadow-xl shadow-primary/20">
+                Explore Projects <ArrowRight className="w-5 h-5" />
               </Link>
-              <Link href="/projects" className="w-full sm:w-auto glass text-white px-8 sm:px-12 py-4 sm:py-5 rounded-xl sm:rounded-2xl text-base sm:text-lg font-bold hover:bg-white/10 transition-all border border-white/10 text-center">
+              <Link href="/projects" className="glass text-white px-10 py-5 rounded-2xl text-lg font-bold hover:bg-white/10 transition-all border border-white/10 text-center">
                 Browse Solutions
               </Link>
             </div>
@@ -52,37 +53,35 @@ export default function Home() {
       </section>
 
       {/* Why Us Section */}
-      <section className="py-20 sm:py-32 relative">
-        <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-12">
-          <div className="flex flex-col items-center mb-16 sm:mb-24 text-center">
-             <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-             >
-               <span className="text-primary font-black text-[10px] sm:text-xs uppercase tracking-[0.3em] mb-4 block">The Pixelrift Advantage</span>
-               <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white px-4">Why Businesses Choose Us</h2>
-             </motion.div>
-          </div>
-          
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-6">
-            {whyUs.map((f, i) => (
-              <motion.div 
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="glass p-8 sm:p-10 rounded-2xl sm:rounded-3xl text-center glass-hover border-white/5 relative group"
-              >
-                <div className="inline-flex p-3 sm:p-4 bg-primary/10 rounded-xl sm:rounded-2xl mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
-                  {f.icon}
-                </div>
-                <h3 className="text-lg sm:text-xl font-bold text-white mb-3 tracking-tight">{f.title}</h3>
-                <p className="text-slate-400 text-xs sm:text-sm leading-relaxed px-2 sm:px-0">{f.desc}</p>
-              </motion.div>
-            ))}
-          </div>
+      <section className="py-16 md:py-24 relative">
+        <div className="flex flex-col items-center mb-16 text-center">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+          >
+            <span className="text-primary font-black text-xs uppercase tracking-[0.3em] mb-4 block">The Pixelrift Advantage</span>
+            <h2 className="text-2xl md:text-4xl font-semibold text-white">Why Businesses Choose Us</h2>
+          </motion.div>
+        </div>
+        
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {whyUs.map((f, i) => (
+            <motion.div 
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              className="glass p-8 rounded-3xl text-center border-white/5 relative group"
+            >
+              <div className="inline-flex p-4 bg-primary/10 rounded-2xl mb-6 group-hover:scale-110 transition-transform">
+                {f.icon}
+              </div>
+              <h3 className="text-xl font-bold text-white mb-3">{f.title}</h3>
+              <p className="text-gray-400 leading-relaxed text-sm">{f.desc}</p>
+            </motion.div>
+          ))}
         </div>
       </section>
 

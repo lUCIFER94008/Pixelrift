@@ -62,8 +62,8 @@ export default function Projects() {
     : projectsData.filter(p => p.category === filter);
 
   return (
-    <div className="pt-24 sm:pt-32 pb-16 sm:pb-24 min-h-screen relative overflow-hidden">
-      <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-12">
+    <div className="py-16 md:py-24 min-h-screen relative overflow-hidden">
+      <div>
         <header className="mb-12 sm:mb-16 flex flex-col lg:flex-row lg:items-end justify-between gap-6 sm:gap-10 border-b border-white/5 pb-8 sm:pb-12">
           <div className="max-w-xl text-center lg:text-left">
              <motion.div
@@ -73,10 +73,10 @@ export default function Projects() {
                 <div className="flex items-center justify-center lg:justify-start gap-3 text-primary text-[10px] sm:text-xs font-black uppercase tracking-[0.3em] mb-4">
                   <Sparkles className="w-4 h-4" /> Proven Excellence
                 </div>
-                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white mb-4 sm:mb-6 tracking-tighter leading-tight">
+                <h1 className="text-4xl md:text-6xl font-bold leading-tight text-white mb-6">
                    Project Catalog
                 </h1>
-                <p className="text-slate-400 text-sm sm:text-lg leading-relaxed font-medium px-4 lg:px-0">
+                <p className="text-gray-400 leading-relaxed text-lg">
                   Premium ready-made web solutions designed to help your business scale instantly. 
                   Now featuring our recently launched <span className="text-white font-bold">Live Projects</span>.
                 </p>
@@ -102,7 +102,7 @@ export default function Projects() {
 
         <motion.main 
           layout
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
         >
           {filteredProjects.map((project) => (
             <motion.div 

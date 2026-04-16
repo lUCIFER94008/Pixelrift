@@ -109,27 +109,24 @@ const Pricing = () => {
   ];
 
   return (
-    <section id="pricing" className="py-20 sm:py-32 relative overflow-hidden">
-      <div className="container mx-auto px-4 sm:px-6">
-        <div className="text-center mb-16 sm:mb-24">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <span className="text-primary font-black text-xs uppercase tracking-[0.3em] mb-4 sm:mb-6 block drop-shadow-sm">
-              <Sparkles className="inline-block w-4 h-4 mr-2 mb-1" /> Transparent Pricing
-            </span>
-            <h2 className="text-3xl sm:text-5xl md:text-7xl font-black text-white mb-6 sm:mb-8 tracking-tighter leading-tight">
-              Simple Pricing for <br /> 
-              <span className="text-gradient">Every Business</span>
-            </h2>
-            <p className="text-slate-400 max-w-2xl mx-auto text-sm sm:text-lg leading-relaxed font-medium px-4">
-              Choose a plan that fits your needs. Transparent pricing, no hidden costs.
-              Built for visionary entrepreneurs.
-            </p>
-          </motion.div>
-        </div>
+    <section id="pricing" className="py-16 md:py-24 relative overflow-hidden">
+      <div className="text-center mb-16 md:mb-24">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+        >
+          <span className="text-primary font-black text-xs uppercase tracking-[0.3em] mb-4 block">
+            <Sparkles className="inline-block w-4 h-4 mr-2 mb-1" /> Transparent Pricing
+          </span>
+          <h2 className="text-2xl md:text-4xl font-semibold text-white mb-6">
+            Simple Pricing for <span className="text-gradient">Every Business</span>
+          </h2>
+          <p className="text-gray-400 leading-relaxed max-w-2xl mx-auto text-lg">
+            Choose a plan that fits your needs. Transparent pricing, no hidden costs.
+          </p>
+        </motion.div>
+      </div>
 
         <div className="flex flex-col md:flex-row justify-center items-stretch gap-8 sm:gap-12 lg:gap-8 max-w-5xl mx-auto relative z-10 px-2 sm:px-0">
           {plans.map((plan, i) => (
@@ -148,7 +145,6 @@ const Pricing = () => {
             </motion.div>
           ))}
         </div>
-      </div>
 
       <BookingModal 
         isOpen={modalState.isOpen} 

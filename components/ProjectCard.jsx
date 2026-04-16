@@ -10,7 +10,7 @@ const ProjectCard = ({ project }) => {
   return (
     <motion.div 
       whileHover={{ y: -10, scale: 1.02 }}
-      className={`glass rounded-[2rem] overflow-hidden group border border-white/10 transition-all duration-500 hover:shadow-[0_20px_60px_-15px_rgba(99,102,241,0.4)] ${isLive ? 'border-primary/30' : ''}`}
+      className={`glass rounded-[2rem] overflow-hidden group border border-white/5 transition-all duration-500 hover:shadow-xl ${isLive ? 'border-primary/20' : ''}`}
     >
       <div className="relative h-64 sm:h-72 overflow-hidden">
         <img 
@@ -37,8 +37,8 @@ const ProjectCard = ({ project }) => {
       
       <div className="p-6 sm:p-10 text-center">
         <div className="mb-6 sm:mb-8">
-          <h3 className="text-xl sm:text-2xl font-bold text-white group-hover:text-primary transition-colors mb-2 sm:mb-3 tracking-tight">{project.title}</h3>
-          <p className="text-slate-400 text-xs sm:text-sm leading-relaxed max-w-[280px] mx-auto min-h-[40px] sm:min-h-[48px]">
+          <h3 className="text-xl font-bold text-white group-hover:text-primary transition-colors mb-2">{project.title}</h3>
+          <p className="text-gray-400 leading-relaxed text-sm">
             {project.description}
           </p>
         </div>

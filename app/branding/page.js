@@ -201,34 +201,33 @@ export default function BrandingPage() {
     <div className="pb-16 sm:pb-24">
 
       {/* ══════════ 1. HERO ══════════ */}
-      <section className="relative pt-32 sm:pt-44 pb-24 sm:pb-36 overflow-hidden border-b border-white/5">
-        <div className="container mx-auto px-4 sm:px-6 md:px-8 text-center relative z-10">
+      <section className="py-16 md:py-24 relative overflow-hidden border-b border-white/5">
+        <div className="text-center relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="max-w-4xl mx-auto"
           >
-            <span className="inline-block px-4 py-1.5 glass rounded-full text-primary text-[9px] sm:text-[10px] font-black uppercase tracking-[0.2em] mb-6 sm:mb-8">
+            <span className="inline-block px-4 py-1.5 glass rounded-full text-primary text-[10px] font-black uppercase tracking-[0.2em] mb-8">
               <Sparkles className="inline w-3 h-3 mr-1 -mt-0.5" /> Branding Services
             </span>
-            <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white mb-6 sm:mb-8 leading-[1.05] tracking-tighter">
-              Build a Powerful <br />
-              <span className="text-gradient">Brand Identity</span>
+            <h1 className="text-4xl md:text-6xl font-bold leading-tight text-white mb-8">
+              Build a Powerful <span className="text-gradient">Brand Identity</span>
             </h1>
-            <p className="text-sm sm:text-lg md:text-xl text-slate-400 mb-10 sm:mb-12 max-w-2xl mx-auto leading-relaxed font-medium px-4 sm:px-0">
+            <p className="text-gray-400 leading-relaxed text-lg mb-12 max-w-2xl mx-auto">
               We don&apos;t just build websites — we craft complete digital brands that stand out and
               leave a lasting impression.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center px-4 sm:px-0">
+            <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <a
                 href="#pricing"
-                className="w-full sm:w-auto bg-gradient text-white px-8 sm:px-12 py-4 sm:py-5 rounded-xl sm:rounded-2xl text-base sm:text-lg font-bold hover:opacity-95 transition-all flex items-center justify-center gap-3 group shadow-xl shadow-primary/20"
+                className="bg-gradient text-white px-10 py-5 rounded-2xl text-lg font-bold hover:opacity-95 transition-all flex items-center justify-center gap-3 shadow-xl shadow-primary/20"
               >
-                Start Your Brand <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                Start Your Brand <ArrowRight className="w-5 h-5" />
               </a>
               <a
                 href="#services"
-                className="w-full sm:w-auto glass text-white px-8 sm:px-12 py-4 sm:py-5 rounded-xl sm:rounded-2xl text-base sm:text-lg font-bold hover:bg-white/10 transition-all border border-white/10 text-center"
+                className="glass text-white px-10 py-5 rounded-2xl text-lg font-bold hover:bg-white/10 transition-all border border-white/10 text-center"
               >
                 Explore Services
               </a>
@@ -241,59 +240,56 @@ export default function BrandingPage() {
       </section>
 
       {/* ══════════ 2. SERVICES ══════════ */}
-      <section id="services" className="py-20 sm:py-32 relative">
-        <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-12">
-          <div className="text-center mb-16 sm:mb-24">
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
-              <span className="text-primary font-black text-[10px] sm:text-xs uppercase tracking-[0.3em] mb-4 block">
-                What We Offer
-              </span>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white">Our Branding Services</h2>
-            </motion.div>
-          </div>
+      <section id="services" className="py-16 md:py-24 relative">
+        <div className="text-center mb-16">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
+            <span className="text-primary font-black text-xs uppercase tracking-[0.3em] mb-4 block">
+              What We Offer
+            </span>
+            <h2 className="text-2xl md:text-4xl font-semibold text-white">Our Branding Services</h2>
+          </motion.div>
+        </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
-            {services.map((s, i) => (
-              <motion.div
-                key={i}
-                custom={i}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={fadeUp}
-                className="glass p-8 sm:p-10 rounded-2xl sm:rounded-3xl text-center glass-hover border-white/5 relative group cursor-default"
-              >
-                <div className={`inline-flex p-4 rounded-2xl mb-6 transition-all duration-500 group-hover:scale-110 group-hover:rotate-6 ${
-                  s.color === 'primary' ? 'bg-primary/10 text-primary' :
-                  s.color === 'secondary' ? 'bg-secondary/10 text-secondary' :
-                  'bg-accent/10 text-accent'
-                }`}>
-                  {s.icon}
-                </div>
-                <h3 className="text-lg sm:text-xl font-bold text-white mb-3 tracking-tight">{s.title}</h3>
-                <p className="text-slate-400 text-xs sm:text-sm leading-relaxed">{s.desc}</p>
-              </motion.div>
-            ))}
-          </div>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {services.map((s, i) => (
+            <motion.div
+              key={i}
+              custom={i}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeUp}
+              className="glass p-8 rounded-3xl text-center border-white/5 relative group"
+            >
+              <div className={`inline-flex p-4 rounded-2xl mb-6 transition-transform group-hover:scale-110 ${
+                s.color === 'primary' ? 'bg-primary/10 text-primary' :
+                s.color === 'secondary' ? 'bg-secondary/10 text-secondary' :
+                'bg-accent/10 text-accent'
+              }`}>
+                {s.icon}
+              </div>
+              <h3 className="text-xl font-bold text-white mb-3">{s.title}</h3>
+              <p className="text-gray-400 leading-relaxed text-sm">{s.desc}</p>
+            </motion.div>
+          ))}
         </div>
       </section>
 
       {/* ══════════ 2.5 COLOR PALETTES ══════════ */}
-      <section className="py-20 sm:py-32 relative border-t border-white/5">
-        <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-12">
-          <div className="text-center mb-16 sm:mb-24">
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
-              <span className="text-primary font-black text-[10px] sm:text-xs uppercase tracking-[0.3em] mb-4 block">
-                Design Systems
-              </span>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white mb-4">Color Palettes We Create</h2>
-              <p className="text-slate-400 text-sm sm:text-base max-w-xl mx-auto">
-                Carefully crafted color systems that define your brand identity.
-              </p>
-            </motion.div>
-          </div>
+      <section className="py-16 md:py-24 relative border-t border-white/5">
+        <div className="text-center mb-16">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
+            <span className="text-primary font-black text-xs uppercase tracking-[0.3em] mb-4 block">
+              Design Systems
+            </span>
+            <h2 className="text-2xl md:text-4xl font-semibold text-white mb-4">Color Palettes We Create</h2>
+            <p className="text-gray-400 leading-relaxed max-w-xl mx-auto text-lg">
+              Carefully crafted color systems that define your brand identity.
+            </p>
+          </motion.div>
+        </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {colorPalettes.map((palette, i) => (
               <motion.div
                 key={i}
@@ -302,10 +298,10 @@ export default function BrandingPage() {
                 whileInView="visible"
                 viewport={{ once: true }}
                 variants={fadeUp}
-                className="glass rounded-2xl sm:rounded-3xl border-white/5 overflow-hidden group cursor-default hover:scale-[1.03] hover:border-primary/20 transition-all duration-500 hover:shadow-[0_0_40px_-10px_rgba(99,102,241,0.25)]"
+                className="glass rounded-3xl border-white/5 overflow-hidden group hover:scale-[1.03] transition-all duration-500"
               >
                 {/* Color Swatches */}
-                <div className="flex h-28 sm:h-36">
+                <div className="flex h-36">
                   {palette.colors.map((c, j) => (
                     <div
                       key={j}
@@ -316,13 +312,13 @@ export default function BrandingPage() {
                 </div>
 
                 {/* Palette Info */}
-                <div className="p-5 sm:p-6">
-                  <h4 className="text-white font-bold text-sm sm:text-base mb-3 tracking-tight">{palette.name}</h4>
-                  <div className="flex flex-wrap gap-1.5">
+                <div className="p-6">
+                  <h4 className="text-white font-bold mb-3">{palette.name}</h4>
+                  <div className="flex flex-wrap gap-2">
                     {palette.colors.map((c, j) => (
                       <span
                         key={j}
-                        className="text-[9px] sm:text-[10px] font-mono font-bold px-2 py-1 rounded-md bg-white/[0.05] text-slate-400 border border-white/[0.06] select-all hover:bg-white/10 hover:text-white transition-colors cursor-text"
+                        className="text-[10px] font-mono font-bold px-2 py-1 rounded-md bg-white/5 text-slate-400 border border-white/10"
                       >
                         {c.hex}
                       </span>
@@ -339,32 +335,30 @@ export default function BrandingPage() {
             whileInView="visible"
             viewport={{ once: true }}
             variants={fadeUp}
-            className="text-center mt-12 sm:mt-16"
+            className="text-center mt-16"
           >
             <a
               href="#contact"
-              className="inline-flex items-center gap-3 bg-gradient text-white px-8 sm:px-10 py-3.5 sm:py-4 rounded-xl sm:rounded-2xl text-xs sm:text-sm font-bold hover:opacity-90 transition-all group shadow-lg shadow-primary/20"
+              className="inline-flex items-center gap-3 bg-gradient text-white px-10 py-4 rounded-2xl text-sm font-bold hover:opacity-90 transition-all shadow-lg shadow-primary/20"
             >
-              <Palette className="w-4 h-4" /> Request Custom Branding <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              <Palette className="w-4 h-4" /> Request Custom Branding <ArrowRight className="w-4 h-4" />
             </a>
           </motion.div>
-        </div>
       </section>
 
       {/* ══════════ 3. PRICING ══════════ */}
-      <section id="pricing" className="py-20 sm:py-32 relative border-t border-white/5">
-        <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-12">
-          <div className="text-center mb-16 sm:mb-24">
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
-              <span className="text-primary font-black text-[10px] sm:text-xs uppercase tracking-[0.3em] mb-4 block">
-                Transparent Pricing
-              </span>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white mb-4">Branding Packages</h2>
-              <p className="text-slate-400 text-sm sm:text-base max-w-xl mx-auto">
-                Choose the plan that fits your vision. Every package is crafted to deliver maximum impact.
-              </p>
-            </motion.div>
-          </div>
+      <section id="pricing" className="py-16 md:py-24 relative border-t border-white/5">
+        <div className="text-center mb-16">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
+            <span className="text-primary font-black text-xs uppercase tracking-[0.3em] mb-4 block">
+              Transparent Pricing
+            </span>
+            <h2 className="text-2xl md:text-4xl font-semibold text-white mb-4">Branding Packages</h2>
+            <p className="text-gray-400 leading-relaxed max-w-xl mx-auto text-lg">
+              Choose the plan that fits your vision. Every package is crafted to deliver maximum impact.
+            </p>
+          </motion.div>
+        </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 max-w-5xl mx-auto">
             {plans.map((plan, i) => (
@@ -429,22 +423,20 @@ export default function BrandingPage() {
               </motion.div>
             ))}
           </div>
-        </div>
       </section>
 
       {/* ══════════ 4. SHOWCASE ══════════ */}
-      <section className="py-20 sm:py-32 relative border-t border-white/5">
-        <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-12">
-          <div className="text-center mb-16 sm:mb-24">
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
-              <span className="text-primary font-black text-[10px] sm:text-xs uppercase tracking-[0.3em] mb-4 block">
-                Our Portfolio
-              </span>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white">Branding Showcase</h2>
-            </motion.div>
-          </div>
+      <section className="py-16 md:py-24 relative border-t border-white/5">
+        <div className="text-center mb-16">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
+            <span className="text-primary font-black text-xs uppercase tracking-[0.3em] mb-4 block">
+              Our Portfolio
+            </span>
+            <h2 className="text-2xl md:text-4xl font-semibold text-white">Branding Showcase</h2>
+          </motion.div>
+        </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {showcaseProjects.map((p, i) => (
               <motion.div
                 key={i}
@@ -478,42 +470,39 @@ export default function BrandingPage() {
               </motion.div>
             ))}
           </div>
-        </div>
       </section>
 
       {/* ══════════ 5. CTA BANNER ══════════ */}
-      <section className="py-16 sm:py-24 relative overflow-hidden">
-        <div className="container mx-auto px-4 sm:px-6 md:px-8">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeUp}
-            className="glass rounded-[2rem] sm:rounded-[3rem] p-10 sm:p-16 border-white/10 relative overflow-hidden text-center"
+      <section className="py-16 md:py-24 relative overflow-hidden">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeUp}
+          className="glass rounded-[3rem] p-10 md:p-16 border-white/10 relative overflow-hidden text-center"
+        >
+          <Sparkles className="w-6 h-6 text-primary mx-auto mb-4" />
+          <h2 className="text-2xl md:text-4xl font-semibold text-white mb-4">
+            Need branding + website together?
+          </h2>
+          <p className="text-gray-400 leading-relaxed max-w-xl mx-auto mb-10 text-lg">
+            Get the complete package — brand identity, UI/UX design, and a fully built website — all from one team.
+          </p>
+          <Link
+            href="/projects"
+            className="inline-flex items-center gap-3 bg-gradient text-white px-10 py-5 rounded-2xl text-lg font-bold hover:opacity-95 transition-all shadow-xl shadow-primary/20"
           >
-            <Sparkles className="w-6 h-6 text-primary mx-auto mb-4" />
-            <h2 className="text-2xl sm:text-4xl md:text-5xl font-black text-white mb-4 tracking-tighter">
-              Need branding + website together?
-            </h2>
-            <p className="text-slate-400 text-sm sm:text-base max-w-xl mx-auto mb-8 sm:mb-10">
-              Get the complete package — brand identity, UI/UX design, and a fully built website — all from one team.
-            </p>
-            <Link
-              href="/projects"
-              className="inline-flex items-center gap-3 bg-gradient text-white px-8 sm:px-12 py-4 sm:py-5 rounded-xl sm:rounded-2xl text-base sm:text-lg font-bold hover:opacity-95 transition-all group shadow-xl shadow-primary/20"
-            >
-              Get Full Package <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </Link>
-            {/* decorative blurs */}
-            <div className="absolute -top-20 -left-20 w-60 h-60 bg-primary/15 blur-[80px] rounded-full -z-10"></div>
-            <div className="absolute -bottom-20 -right-20 w-60 h-60 bg-secondary/15 blur-[80px] rounded-full -z-10"></div>
-          </motion.div>
-        </div>
+            Get Full Package <ArrowRight className="w-5 h-5" />
+          </Link>
+          {/* decorative blurs */}
+          <div className="absolute -top-20 -left-20 w-60 h-60 bg-primary/15 blur-[80px] rounded-full -z-10"></div>
+          <div className="absolute -bottom-20 -right-20 w-60 h-60 bg-secondary/15 blur-[80px] rounded-full -z-10"></div>
+        </motion.div>
       </section>
 
       {/* ══════════ 6. CONTACT FORM ══════════ */}
-      <section id="contact" className="py-20 sm:py-32 border-t border-white/5">
-        <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-12 max-w-3xl">
+      <section id="contact" className="py-16 md:py-24 border-t border-white/5">
+        <div className="max-w-3xl mx-auto">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
             {submitted ? (
               /* ── Success State ── */
