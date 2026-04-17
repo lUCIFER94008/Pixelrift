@@ -16,10 +16,9 @@ const poppins = Poppins({
 });
 
 export const metadata = {
-  title: "Pixelrift — Build Your Business Website Instantly",
-  description: "Premium ready-made web solutions with custom design and full support. Build your business website instantly with Pixelrift.",
+  title: "Pixelrift",
   icons: {
-    icon: "/logo.png",
+    icon: "/favicon.png",
   },
 };
 

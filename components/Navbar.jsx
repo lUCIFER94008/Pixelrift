@@ -26,16 +26,18 @@ const Navbar = () => {
         scrolled ? 'py-4 bg-dark/80 backdrop-blur-xl border-b border-white/5' : 'py-6 bg-transparent'
       }`}>
         <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12 flex justify-between items-center w-full">
-          <Link href="/" className="flex items-center gap-2.5 group relative z-[70]">
-            <img
-              src="/logo.png"
-              alt="Pixelrift Logo"
-              className="h-8 md:h-10 w-auto object-contain transition-all duration-300"
-              style={{ filter: "drop-shadow(0 0 8px rgba(139, 92, 246, 0.6))" }}
-            />
-            <span className="text-xl md:text-2xl font-black text-white tracking-tighter">
-              Pixel<span className="text-primary">rift</span>
-            </span>
+          <Link href="/" className="z-[70]">
+            <div className="flex items-center gap-2">
+              <img
+                src="/logo.png"
+                alt="Pixelrift Logo"
+                className="h-8 md:h-10 w-auto object-contain"
+              />
+
+              <span className="text-white font-bold text-lg">
+                Pixel<span className="text-purple-500">rift</span>
+              </span>
+            </div>
           </Link>
 
           {/* Desktop Menu */}
