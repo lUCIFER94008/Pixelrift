@@ -1,8 +1,10 @@
 "use client";
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Sparkles } from 'lucide-react';
+import { Sparkles, LayoutGrid, Filter, Search } from 'lucide-react';
 import ProjectCard from '@/components/ProjectCard';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
 
 const projectsData = [
   {
@@ -62,36 +64,38 @@ export default function Projects() {
     : projectsData.filter(p => p.category === filter);
 
   return (
-    <div className="bg-white min-h-screen pt-24 pb-20">
-      <div className="max-w-7xl mx-auto px-4 md:px-8">
-        <header className="mb-16 flex flex-col lg:flex-row lg:items-end justify-between gap-10 border-b border-gray-100 pb-12">
-          <div className="max-w-2xl">
+    <div className="relative min-h-screen">
+      <Navbar />
+      
+      <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12 pt-32 pb-24">
+        <header className="mb-16 flex flex-col lg:flex-row lg:items-end justify-between gap-10 border-b border-white/5 pb-12">
+          <div className="max-w-2xl text-center lg:text-left">
              <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
              >
-                <div className="flex items-center gap-3 text-primary text-xs font-bold uppercase tracking-[0.3em] mb-4">
-                  <Sparkles className="w-4 h-4" /> Proven Excellence
+                <div className="flex items-center justify-center lg:justify-start gap-3 text-primary text-xs font-black uppercase tracking-[0.3em] mb-4">
+                  <Sparkles className="w-4 h-4" /> Ready-to-Launch
                 </div>
-                <h1 className="text-4xl md:text-6xl font-bold text-dark mb-6">
+                <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
                    Project Catalog
                 </h1>
-                <p className="text-gray-text leading-relaxed text-lg font-medium">
+                <p className="text-gray-400 leading-relaxed text-lg font-medium">
                   Premium ready-made web solutions designed to help your business scale instantly. 
-                  Explore our <span className="text-primary font-bold">Featured Projects</span> and live deployments.
+                  Now featuring our recently launched <span className="text-white font-bold">Live Deployments</span>.
                 </p>
              </motion.div>
           </div>
           
-          <div className="flex flex-wrap gap-2 p-1 bg-gray-50 rounded-2xl border border-gray-100">
+          <div className="flex flex-wrap items-center justify-center lg:justify-end gap-2 p-2 glass rounded-2xl border border-white/5 glossy">
             {categories.map(cat => (
               <button
                 key={cat}
                 onClick={() => setFilter(cat)}
-                className={`px-6 py-2.5 rounded-xl text-xs font-bold transition-all uppercase tracking-widest ${
+                className={`px-6 py-2.5 rounded-xl text-[10px] font-black transition-all uppercase tracking-widest ${
                   filter === cat 
-                  ? 'bg-white text-primary shadow-sm border border-gray-100' 
-                  : 'text-gray-400 hover:text-dark'
+                  ? 'bg-gradient text-white shadow-lg shadow-primary/20' 
+                  : 'text-gray-500 hover:text-white hover:bg-white/5'
                 }`}
               >
                 {cat}
@@ -110,13 +114,19 @@ export default function Projects() {
               layout
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.3 }}
+              transition={{ duration: 0.4 }}
             >
               <ProjectCard project={project} />
             </motion.div>
           ))}
         </motion.main>
       </div>
+
+      {/* Decorative Blurs */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 blur-[120px] -z-10 rounded-full" />
+      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-secondary/5 blur-[100px] -z-10 rounded-full" />
+
+      <Footer />
     </div>
   );
 }

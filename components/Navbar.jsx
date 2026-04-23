@@ -23,8 +23,8 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className={`fixed top-0 left-0 right-0 z-[60] transition-all duration-300 ${
-        scrolled ? 'py-4 bg-white/80 backdrop-blur-xl border-b border-gray-100 shadow-sm' : 'py-6 bg-white border-b border-gray-100'
+      <nav className={`fixed top-0 left-0 right-0 z-[60] transition-all duration-500 ${
+        scrolled ? 'py-4 glass border-b border-white/10' : 'py-6 bg-transparent'
       }`}>
         <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12 flex justify-between items-center w-full">
           <Link href="/" className="z-[70]">
@@ -32,10 +32,9 @@ const Navbar = () => {
               <img
                 src="/logo.png"
                 alt="Pixelrift Logo"
-                className="h-8 md:h-10 w-auto object-contain"
+                className="h-8 md:h-10 w-auto object-contain brightness-0 invert"
               />
-
-              <span className="text-dark font-bold text-lg">
+              <span className="text-white font-bold text-lg tracking-tight">
                 Pixel<span className="text-primary">rift</span>
               </span>
             </div>
@@ -48,7 +47,7 @@ const Navbar = () => {
                 <Link 
                   key={link.name} 
                   href={link.href} 
-                  className="text-gray-500 hover:text-dark text-sm font-semibold transition-all hover:translate-y-[-1px] active:translate-y-0"
+                  className="text-gray-400 hover:text-white text-sm font-semibold transition-all hover:translate-y-[-1px]"
                 >
                   {link.name}
                 </Link>
@@ -56,7 +55,7 @@ const Navbar = () => {
             </div>
             <Link 
               href="/projects" 
-              className="bg-gradient text-white px-8 py-3 rounded-xl text-sm font-bold hover:opacity-90 transition-all shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-[0.98]"
+              className="bg-gradient text-white px-8 py-3 rounded-xl text-sm font-bold hover:opacity-90 transition-all shadow-lg shadow-primary/20 hover:scale-[1.02]"
             >
               Start Building
             </Link>
@@ -64,9 +63,8 @@ const Navbar = () => {
 
           {/* Mobile Toggle */}
           <button 
-            className="md:hidden relative z-[70] p-2 text-dark bg-gray-50 rounded-xl border border-gray-100" 
+            className="md:hidden relative z-[70] p-2 text-white bg-white/5 rounded-xl border border-white/10" 
             onClick={() => setIsOpen(!isOpen)}
-            aria-label="Toggle Menu"
           >
             {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
@@ -82,36 +80,37 @@ const Navbar = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsOpen(false)}
-              className="fixed inset-0 bg-white/95 backdrop-blur-2xl z-[55] md:hidden"
+              className="fixed inset-0 bg-dark/60 backdrop-blur-md z-[55] md:hidden"
             />
             <motion.div
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-              className="fixed top-0 right-0 bottom-0 w-[85%] max-w-sm bg-white border-l border-gray-100 z-[60] md:hidden p-8 pt-32 flex flex-col gap-8 shadow-2xl"
+              className="fixed top-0 right-0 bottom-0 w-[85%] max-w-sm glass border-l border-white/10 z-[60] md:hidden p-8 pt-32 flex flex-col gap-8 shadow-2xl"
             >
               <div className="flex flex-col gap-4">
-                <span className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2 px-2">Navigation</span>
+                <span className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-2 px-2">Navigation</span>
                 {navLinks.map((link) => (
                   <Link 
                     key={link.name} 
                     href={link.href} 
                     onClick={() => setIsOpen(false)}
-                    className="flex items-center gap-4 text-xl font-bold text-dark hover:text-primary transition-colors p-4 rounded-2xl hover:bg-gray-50 border border-transparent hover:border-gray-100"
+                    className="flex items-center gap-4 text-xl font-bold text-white hover:text-primary transition-colors p-4 rounded-2xl hover:bg-white/5 border border-transparent hover:border-white/10"
                   >
-                    <div className="p-2 bg-gray-100 rounded-xl text-gray-500">{link.icon}</div>
+                    <div className="p-2 bg-white/5 rounded-xl text-gray-400">{link.icon}</div>
                     {link.name}
                   </Link>
                 ))}
               </div>
 
               <div className="mt-auto space-y-6">
-                <div className="p-6 rounded-3xl border border-primary/10 bg-primary/5">
+                <div className="p-6 rounded-3xl border border-primary/20 bg-primary/5 relative overflow-hidden">
+                   <div className="absolute top-0 right-0 w-20 h-20 bg-primary/10 blur-2xl rounded-full" />
                    <div className="flex items-center gap-2 text-primary font-bold uppercase text-[10px] tracking-widest mb-2">
                      <Zap className="w-3 h-3" /> Get Started Now
                    </div>
-                   <p className="text-gray-500 text-xs mb-6 leading-relaxed">Ready to launch your enterprise-grade digital product?</p>
+                   <p className="text-gray-400 text-xs mb-6 leading-relaxed">Ready to launch your enterprise-grade digital product?</p>
                    <Link 
                       href="/projects" 
                       onClick={() => setIsOpen(false)}
@@ -120,7 +119,7 @@ const Navbar = () => {
                      Explore Assets <ArrowRight className="w-4 h-4" />
                    </Link>
                 </div>
-                <p className="text-center text-[10px] text-gray-400 font-bold uppercase tracking-widest">© 2026 Pixelrift. By R7</p>
+                <p className="text-center text-[10px] text-gray-500 font-bold uppercase tracking-widest">© 2026 Pixelrift. By R7</p>
               </div>
             </motion.div>
           </>
