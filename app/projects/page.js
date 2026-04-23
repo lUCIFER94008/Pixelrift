@@ -62,36 +62,36 @@ export default function Projects() {
     : projectsData.filter(p => p.category === filter);
 
   return (
-    <div className="py-16 md:py-24 min-h-screen relative overflow-hidden">
-      <div>
-        <header className="mb-12 sm:mb-16 flex flex-col lg:flex-row lg:items-end justify-between gap-6 sm:gap-10 border-b border-white/5 pb-8 sm:pb-12">
-          <div className="max-w-xl text-center lg:text-left">
+    <div className="bg-white min-h-screen pt-24 pb-20">
+      <div className="max-w-7xl mx-auto px-4 md:px-8">
+        <header className="mb-16 flex flex-col lg:flex-row lg:items-end justify-between gap-10 border-b border-gray-100 pb-12">
+          <div className="max-w-2xl">
              <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
              >
-                <div className="flex items-center justify-center lg:justify-start gap-3 text-primary text-[10px] sm:text-xs font-black uppercase tracking-[0.3em] mb-4">
+                <div className="flex items-center gap-3 text-primary text-xs font-bold uppercase tracking-[0.3em] mb-4">
                   <Sparkles className="w-4 h-4" /> Proven Excellence
                 </div>
-                <h1 className="text-4xl md:text-6xl font-bold leading-tight text-white mb-6">
+                <h1 className="text-4xl md:text-6xl font-bold text-dark mb-6">
                    Project Catalog
                 </h1>
-                <p className="text-gray-400 leading-relaxed text-lg">
+                <p className="text-gray-text leading-relaxed text-lg font-medium">
                   Premium ready-made web solutions designed to help your business scale instantly. 
-                  Now featuring our recently launched <span className="text-white font-bold">Live Projects</span>.
+                  Explore our <span className="text-primary font-bold">Featured Projects</span> and live deployments.
                 </p>
              </motion.div>
           </div>
           
-          <div className="flex flex-wrap justify-center lg:justify-end bg-slate-900/50 p-1.5 rounded-2xl border border-white/5 backdrop-blur-xl">
+          <div className="flex flex-wrap gap-2 p-1 bg-gray-50 rounded-2xl border border-gray-100">
             {categories.map(cat => (
               <button
                 key={cat}
                 onClick={() => setFilter(cat)}
-                className={`px-4 sm:px-6 py-2 sm:py-2.5 rounded-xl text-[10px] sm:text-xs font-black transition-all uppercase tracking-widest ${
+                className={`px-6 py-2.5 rounded-xl text-xs font-bold transition-all uppercase tracking-widest ${
                   filter === cat 
-                  ? 'bg-gradient text-white shadow-lg' 
-                  : 'text-slate-500 hover:text-white'
+                  ? 'bg-white text-primary shadow-sm border border-gray-100' 
+                  : 'text-gray-400 hover:text-dark'
                 }`}
               >
                 {cat}
@@ -102,13 +102,13 @@ export default function Projects() {
 
         <motion.main 
           layout
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
           {filteredProjects.map((project) => (
             <motion.div 
               key={project.id}
               layout
-              initial={{ opacity: 0, scale: 0.9 }}
+              initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.3 }}
             >
@@ -117,9 +117,6 @@ export default function Projects() {
           ))}
         </motion.main>
       </div>
-
-      {/* Decorative Blur */}
-      <div className="absolute top-0 right-0 w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] bg-secondary/10 blur-[80px] sm:blur-[150px] -z-10 rounded-full opacity-50"></div>
     </div>
   );
 }

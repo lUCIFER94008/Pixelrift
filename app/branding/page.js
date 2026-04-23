@@ -136,8 +136,6 @@ const colorPalettes = [
   },
 ];
 
-/* ─────────────── FADE-IN HELPER ─────────────── */
-
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
   visible: (i = 0) => ({
@@ -146,8 +144,6 @@ const fadeUp = {
     transition: { delay: i * 0.1, duration: 0.6, ease: [0.22, 1, 0.36, 1] },
   }),
 };
-
-/* ─────────────── PAGE ─────────────── */
 
 export default function BrandingPage() {
   const [selectedPlan, setSelectedPlan] = useState('premium');
@@ -198,98 +194,96 @@ export default function BrandingPage() {
   };
 
   return (
-    <div className="pb-16 sm:pb-24">
-
-      {/* ══════════ 1. HERO ══════════ */}
-      <section className="py-16 md:py-24 relative overflow-hidden border-b border-white/5">
-        <div className="text-center relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="max-w-4xl mx-auto"
-          >
-            <span className="inline-block px-4 py-1.5 glass rounded-full text-primary text-[10px] font-black uppercase tracking-[0.2em] mb-8">
-              <Sparkles className="inline w-3 h-3 mr-1 -mt-0.5" /> Branding Services
-            </span>
-            <h1 className="text-4xl md:text-6xl font-bold leading-tight text-white mb-8">
-              Build a Powerful <span className="text-gradient">Brand Identity</span>
-            </h1>
-            <p className="text-gray-400 leading-relaxed text-lg mb-12 max-w-2xl mx-auto">
-              We don&apos;t just build websites — we craft complete digital brands that stand out and
-              leave a lasting impression.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-6 justify-center">
-              <a
-                href="#pricing"
-                className="bg-gradient text-white px-10 py-5 rounded-2xl text-lg font-bold hover:opacity-95 transition-all flex items-center justify-center gap-3 shadow-xl shadow-primary/20"
-              >
-                Start Your Brand <ArrowRight className="w-5 h-5" />
-              </a>
-              <a
-                href="#services"
-                className="glass text-white px-10 py-5 rounded-2xl text-lg font-bold hover:bg-white/10 transition-all border border-white/10 text-center"
-              >
-                Explore Services
-              </a>
-            </div>
-          </motion.div>
-        </div>
-        {/* Decorative */}
-        <div className="absolute top-20 left-1/2 -translate-x-1/2 w-[500px] sm:w-[1000px] h-[300px] sm:h-[600px] bg-primary/20 blur-[100px] sm:blur-[180px] rounded-full -z-10 opacity-60"></div>
-        <div className="absolute bottom-0 right-1/2 translate-x-1/2 w-[400px] sm:w-[800px] h-[200px] sm:h-[400px] bg-secondary/10 blur-[80px] sm:blur-[150px] rounded-full -z-10 opacity-40"></div>
-      </section>
-
-      {/* ══════════ 2. SERVICES ══════════ */}
-      <section id="services" className="py-16 md:py-24 relative">
-        <div className="text-center mb-16">
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
-            <span className="text-primary font-black text-xs uppercase tracking-[0.3em] mb-4 block">
-              What We Offer
-            </span>
-            <h2 className="text-2xl md:text-4xl font-semibold text-white">Our Branding Services</h2>
-          </motion.div>
-        </div>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {services.map((s, i) => (
+    <div className="bg-white min-h-screen pt-24 pb-20">
+      <div className="max-w-7xl mx-auto px-4 md:px-8">
+        
+        {/* Hero Section */}
+        <section className="py-20 md:py-32 border-b border-gray-100 mb-20">
+          <div className="text-center">
             <motion.div
-              key={i}
-              custom={i}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={fadeUp}
-              className="glass p-8 rounded-3xl text-center border-white/5 relative group"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="max-w-4xl mx-auto"
             >
-              <div className={`inline-flex p-4 rounded-2xl mb-6 transition-transform group-hover:scale-110 ${
-                s.color === 'primary' ? 'bg-primary/10 text-primary' :
-                s.color === 'secondary' ? 'bg-secondary/10 text-secondary' :
-                'bg-accent/10 text-accent'
-              }`}>
-                {s.icon}
+              <span className="inline-block px-4 py-1.5 bg-primary/5 rounded-full text-primary text-xs font-bold uppercase tracking-[0.2em] mb-8">
+                <Sparkles className="inline w-3 h-3 mr-1 -mt-0.5" /> Branding Services
+              </span>
+              <h1 className="text-5xl md:text-7xl font-bold text-dark mb-8 leading-tight">
+                Build a Powerful <span className="text-gradient">Brand Identity</span>
+              </h1>
+              <p className="text-gray-text leading-relaxed text-lg md:text-xl mb-12 max-w-2xl mx-auto font-medium">
+                We don&apos;t just build websites — we craft complete digital brands that stand out and
+                leave a lasting impression.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <a
+                  href="#pricing"
+                  className="bg-gradient text-white px-10 py-5 rounded-xl text-lg font-bold hover:opacity-95 transition-all flex items-center justify-center gap-3 shadow-xl shadow-primary/20"
+                >
+                  Start Your Brand <ArrowRight className="w-5 h-5" />
+                </a>
+                <a
+                  href="#services"
+                  className="bg-white text-dark border border-gray-200 px-10 py-5 rounded-xl text-lg font-bold hover:bg-gray-50 transition-all text-center"
+                >
+                  Explore Services
+                </a>
               </div>
-              <h3 className="text-xl font-bold text-white mb-3">{s.title}</h3>
-              <p className="text-gray-400 leading-relaxed text-sm">{s.desc}</p>
             </motion.div>
-          ))}
-        </div>
-      </section>
+          </div>
+        </section>
 
-      {/* ══════════ 2.5 COLOR PALETTES ══════════ */}
-      <section className="py-16 md:py-24 relative border-t border-white/5">
-        <div className="text-center mb-16">
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
-            <span className="text-primary font-black text-xs uppercase tracking-[0.3em] mb-4 block">
-              Design Systems
-            </span>
-            <h2 className="text-2xl md:text-4xl font-semibold text-white mb-4">Color Palettes We Create</h2>
-            <p className="text-gray-400 leading-relaxed max-w-xl mx-auto text-lg">
-              Carefully crafted color systems that define your brand identity.
-            </p>
-          </motion.div>
-        </div>
+        {/* Services Section */}
+        <section id="services" className="py-20 mb-20">
+          <div className="text-center mb-16">
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
+              <span className="text-primary font-bold text-xs uppercase tracking-[0.3em] mb-4 block">
+                What We Offer
+              </span>
+              <h2 className="text-3xl md:text-5xl font-bold text-dark">Our Branding Services</h2>
+            </motion.div>
+          </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {services.map((s, i) => (
+              <motion.div
+                key={i}
+                custom={i}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={fadeUp}
+                className="bg-white p-8 rounded-xl border border-gray-100 shadow-sm transition-all hover:shadow-md text-center"
+              >
+                <div className={`inline-flex p-4 rounded-xl mb-6 ${
+                  s.color === 'primary' ? 'bg-primary/5 text-primary' :
+                  s.color === 'secondary' ? 'bg-purple-50 text-purple-600' :
+                  'bg-indigo-50 text-indigo-600'
+                }`}>
+                  {s.icon}
+                </div>
+                <h3 className="text-xl font-bold text-dark mb-3">{s.title}</h3>
+                <p className="text-gray-text leading-relaxed text-sm font-medium">{s.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </section>
+
+        {/* Color Palettes Section */}
+        <section className="py-20 border-t border-gray-100 mb-20">
+          <div className="text-center mb-16">
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
+              <span className="text-primary font-bold text-xs uppercase tracking-[0.3em] mb-4 block">
+                Design Systems
+              </span>
+              <h2 className="text-3xl md:text-5xl font-bold text-dark mb-6">Color Palettes We Create</h2>
+              <p className="text-gray-text leading-relaxed max-w-xl mx-auto text-lg font-medium">
+                Carefully crafted color systems that define your brand identity.
+              </p>
+            </motion.div>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {colorPalettes.map((palette, i) => (
               <motion.div
                 key={i}
@@ -298,27 +292,24 @@ export default function BrandingPage() {
                 whileInView="visible"
                 viewport={{ once: true }}
                 variants={fadeUp}
-                className="glass rounded-3xl border-white/5 overflow-hidden group hover:scale-[1.03] transition-all duration-500"
+                className="bg-white rounded-xl border border-gray-100 overflow-hidden shadow-sm group hover:shadow-md transition-all"
               >
-                {/* Color Swatches */}
-                <div className="flex h-36">
+                <div className="flex h-32">
                   {palette.colors.map((c, j) => (
                     <div
                       key={j}
-                      className="flex-1 transition-all duration-500 group-hover:flex-[1.3] hover:!flex-[2]"
+                      className="flex-1 transition-all duration-300 group-hover:flex-[1.2]"
                       style={{ backgroundColor: c.hex }}
                     />
                   ))}
                 </div>
-
-                {/* Palette Info */}
                 <div className="p-6">
-                  <h4 className="text-white font-bold mb-3">{palette.name}</h4>
+                  <h4 className="text-dark font-bold mb-3">{palette.name}</h4>
                   <div className="flex flex-wrap gap-2">
                     {palette.colors.map((c, j) => (
                       <span
                         key={j}
-                        className="text-[10px] font-mono font-bold px-2 py-1 rounded-md bg-white/5 text-slate-400 border border-white/10"
+                        className="text-[10px] font-mono font-bold px-2 py-1 rounded bg-gray-50 text-gray-400 border border-gray-100"
                       >
                         {c.hex}
                       </span>
@@ -328,39 +319,23 @@ export default function BrandingPage() {
               </motion.div>
             ))}
           </div>
+        </section>
 
-          {/* CTA */}
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeUp}
-            className="text-center mt-16"
-          >
-            <a
-              href="#contact"
-              className="inline-flex items-center gap-3 bg-gradient text-white px-10 py-4 rounded-2xl text-sm font-bold hover:opacity-90 transition-all shadow-lg shadow-primary/20"
-            >
-              <Palette className="w-4 h-4" /> Request Custom Branding <ArrowRight className="w-4 h-4" />
-            </a>
-          </motion.div>
-      </section>
+        {/* Pricing Section */}
+        <section id="pricing" className="py-20 border-t border-gray-100 mb-20">
+          <div className="text-center mb-16">
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
+              <span className="text-primary font-bold text-xs uppercase tracking-[0.3em] mb-4 block">
+                Transparent Pricing
+              </span>
+              <h2 className="text-3xl md:text-5xl font-bold text-dark mb-6">Branding Packages</h2>
+              <p className="text-gray-text leading-relaxed max-w-xl mx-auto text-lg font-medium">
+                Choose the plan that fits your vision. Every package is crafted to deliver maximum impact.
+              </p>
+            </motion.div>
+          </div>
 
-      {/* ══════════ 3. PRICING ══════════ */}
-      <section id="pricing" className="py-16 md:py-24 relative border-t border-white/5">
-        <div className="text-center mb-16">
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
-            <span className="text-primary font-black text-xs uppercase tracking-[0.3em] mb-4 block">
-              Transparent Pricing
-            </span>
-            <h2 className="text-2xl md:text-4xl font-semibold text-white mb-4">Branding Packages</h2>
-            <p className="text-gray-400 leading-relaxed max-w-xl mx-auto text-lg">
-              Choose the plan that fits your vision. Every package is crafted to deliver maximum impact.
-            </p>
-          </motion.div>
-        </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {plans.map((plan, i) => (
               <motion.div
                 key={plan.key}
@@ -370,73 +345,69 @@ export default function BrandingPage() {
                 viewport={{ once: true }}
                 variants={fadeUp}
                 onClick={() => setSelectedPlan(plan.key)}
-                className={`relative p-8 sm:p-10 rounded-[2rem] sm:rounded-[2.5rem] cursor-pointer transition-all duration-500 border-2 overflow-hidden group ${
+                className={`relative p-10 rounded-2xl cursor-pointer transition-all border-2 ${
                   plan.highlight
-                    ? 'branding-plan-highlight'
+                    ? 'border-primary bg-primary/5 shadow-xl shadow-primary/10'
                     : selectedPlan === plan.key
-                      ? 'border-primary/40 bg-primary/5 glass'
-                      : 'border-white/5 glass glass-hover'
+                      ? 'border-primary bg-gray-50 shadow-lg'
+                      : 'border-gray-100 bg-white hover:border-gray-200'
                 }`}
               >
-                {/* Badge */}
                 {plan.tag && (
-                  <div className="absolute top-0 right-6 sm:right-8 bg-gradient px-4 py-1.5 rounded-b-xl text-white text-[7px] sm:text-[8px] font-black uppercase tracking-widest z-20">
+                  <div className="absolute top-0 right-8 bg-gradient px-4 py-1.5 rounded-b-xl text-white text-[8px] font-bold uppercase tracking-widest z-20">
                     {plan.tag}
                   </div>
                 )}
 
-                <div className={`inline-flex p-3 rounded-xl mb-5 transition-colors ${
+                <div className={`inline-flex p-3 rounded-xl mb-6 ${
                   selectedPlan === plan.key || plan.highlight
                     ? 'bg-primary text-white'
-                    : 'bg-white/10 text-slate-400'
+                    : 'bg-gray-100 text-gray-400'
                 }`}>
                   {plan.icon}
                 </div>
 
-                <h3 className="text-white font-black text-lg sm:text-xl mb-1 tracking-tight">{plan.name}</h3>
-                <div className="flex items-baseline gap-1 mb-6">
-                  <span className="text-3xl sm:text-4xl font-black text-white">₹{plan.price}</span>
-                  <span className="text-slate-500 text-xs font-bold">one-time</span>
+                <h3 className="text-dark font-bold text-xl mb-2">{plan.name}</h3>
+                <div className="flex items-baseline gap-1 mb-8">
+                  <span className="text-4xl font-bold text-dark">₹{plan.price}</span>
+                  <span className="text-gray-400 text-xs font-bold uppercase tracking-wider">one-time</span>
                 </div>
 
-                <ul className="space-y-3 mb-8">
+                <ul className="space-y-4 mb-10">
                   {plan.features.map((f, j) => (
-                    <li key={j} className="flex items-center gap-3 text-slate-400 text-xs sm:text-sm">
-                      <div className="bg-primary/20 p-0.5 rounded-full shrink-0">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-primary" />
-                      </div>
+                    <li key={j} className="flex items-center gap-3 text-gray-text text-sm font-medium">
+                      <CheckCircle2 className="w-4 h-4 text-primary shrink-0" />
                       {f}
                     </li>
                   ))}
                 </ul>
 
-                <a
-                  href="#contact"
-                  className={`block w-full text-center py-3.5 sm:py-4 rounded-xl sm:rounded-2xl font-black uppercase text-[10px] sm:text-xs tracking-[0.15em] transition-all ${
+                <button
+                  className={`w-full py-4 rounded-xl font-bold uppercase text-xs tracking-widest transition-all ${
                     plan.highlight || selectedPlan === plan.key
-                      ? 'bg-gradient text-white shadow-lg shadow-primary/20 hover:opacity-90'
-                      : 'bg-white/5 text-white border border-white/10 hover:bg-white/10'
+                      ? 'bg-gradient text-white shadow-lg shadow-primary/20'
+                      : 'bg-gray-50 text-dark border border-gray-200 hover:bg-gray-100'
                   }`}
                 >
                   Get Started
-                </a>
+                </button>
               </motion.div>
             ))}
           </div>
-      </section>
+        </section>
 
-      {/* ══════════ 4. SHOWCASE ══════════ */}
-      <section className="py-16 md:py-24 relative border-t border-white/5">
-        <div className="text-center mb-16">
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
-            <span className="text-primary font-black text-xs uppercase tracking-[0.3em] mb-4 block">
-              Our Portfolio
-            </span>
-            <h2 className="text-2xl md:text-4xl font-semibold text-white">Branding Showcase</h2>
-          </motion.div>
-        </div>
+        {/* Showcase Section */}
+        <section className="py-20 border-t border-gray-100 mb-20">
+          <div className="text-center mb-16">
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
+              <span className="text-primary font-bold text-xs uppercase tracking-[0.3em] mb-4 block">
+                Our Portfolio
+              </span>
+              <h2 className="text-3xl md:text-5xl font-bold text-dark">Branding Showcase</h2>
+            </motion.div>
+          </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {showcaseProjects.map((p, i) => (
               <motion.div
                 key={i}
@@ -445,7 +416,7 @@ export default function BrandingPage() {
                 whileInView="visible"
                 viewport={{ once: true }}
                 variants={fadeUp}
-                className="group relative overflow-hidden rounded-2xl sm:rounded-3xl border border-white/5"
+                className="group relative overflow-hidden rounded-xl border border-gray-100 shadow-sm"
               >
                 <div className="aspect-[4/5] overflow-hidden">
                   <img
@@ -454,198 +425,150 @@ export default function BrandingPage() {
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
                 </div>
-                {/* Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-dark via-dark/40 to-transparent opacity-80 group-hover:opacity-95 transition-opacity duration-500"></div>
-                <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8">
-                  <span className="text-primary text-[9px] sm:text-[10px] font-black uppercase tracking-[0.2em] block mb-2">
+                <div className="absolute inset-0 bg-gradient-to-t from-dark/90 via-dark/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="absolute bottom-0 left-0 right-0 p-8 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+                  <span className="text-primary text-[10px] font-bold uppercase tracking-[0.2em] block mb-2">
                     {p.category}
                   </span>
-                  <h4 className="text-white font-black text-lg sm:text-xl tracking-tight">{p.title}</h4>
-                </div>
-                <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0">
-                  <div className="bg-white/10 backdrop-blur-md p-2 rounded-full">
-                    <Eye className="w-4 h-4 text-white" />
-                  </div>
+                  <h4 className="text-white font-bold text-xl">{p.title}</h4>
                 </div>
               </motion.div>
             ))}
           </div>
-      </section>
+        </section>
 
-      {/* ══════════ 5. CTA BANNER ══════════ */}
-      <section className="py-16 md:py-24 relative overflow-hidden">
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={fadeUp}
-          className="glass rounded-[3rem] p-10 md:p-16 border-white/10 relative overflow-hidden text-center"
-        >
-          <Sparkles className="w-6 h-6 text-primary mx-auto mb-4" />
-          <h2 className="text-2xl md:text-4xl font-semibold text-white mb-4">
-            Need branding + website together?
-          </h2>
-          <p className="text-gray-400 leading-relaxed max-w-xl mx-auto mb-10 text-lg">
-            Get the complete package — brand identity, UI/UX design, and a fully built website — all from one team.
-          </p>
-          <Link
-            href="/projects"
-            className="inline-flex items-center gap-3 bg-gradient text-white px-10 py-5 rounded-2xl text-lg font-bold hover:opacity-95 transition-all shadow-xl shadow-primary/20"
-          >
-            Get Full Package <ArrowRight className="w-5 h-5" />
-          </Link>
-          {/* decorative blurs */}
-          <div className="absolute -top-20 -left-20 w-60 h-60 bg-primary/15 blur-[80px] rounded-full -z-10"></div>
-          <div className="absolute -bottom-20 -right-20 w-60 h-60 bg-secondary/15 blur-[80px] rounded-full -z-10"></div>
-        </motion.div>
-      </section>
-
-      {/* ══════════ 6. CONTACT FORM ══════════ */}
-      <section id="contact" className="py-16 md:py-24 border-t border-white/5">
-        <div className="max-w-3xl mx-auto">
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
-            {submitted ? (
-              /* ── Success State ── */
-              <div className="customization-card text-center py-12 sm:py-16">
-                <motion.div
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  transition={{ type: 'spring', stiffness: 200, damping: 15, delay: 0.2 }}
-                  className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-emerald-500/20 mb-6"
-                >
-                  <CheckCircle2 className="w-10 h-10 text-emerald-400" />
-                </motion.div>
-                <h3 className="text-2xl sm:text-3xl font-black text-white mb-3 tracking-tight">Request Sent!</h3>
-                <p className="text-slate-400 text-sm mb-8 max-w-md mx-auto">
-                  Our branding team will review your request and get in touch within 24 hours.
-                </p>
-                <button
-                  onClick={() => setSubmitted(false)}
-                  className="text-primary text-xs font-bold uppercase tracking-widest hover:text-white transition-colors"
-                >
-                  Submit Another Request →
-                </button>
-              </div>
-            ) : (
-              /* ── Form ── */
-              <div className="customization-card">
-                <div className="text-center mb-8 sm:mb-10">
-                  <div className="inline-flex items-center gap-2 text-primary text-[10px] sm:text-xs font-black uppercase tracking-[0.3em] mb-4">
-                    <Star className="w-4 h-4" /> Get Started
-                  </div>
-                  <h3 className="text-2xl sm:text-3xl font-black text-white tracking-tighter mb-2">
-                    Tell us about your brand
-                  </h3>
-                  <p className="text-slate-500 text-xs sm:text-sm font-medium max-w-lg mx-auto">
-                    Fill in your details and we&apos;ll craft the perfect branding package for you.
-                  </p>
-                  {activePlan && (
-                    <div className="mt-4 inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-primary/30 text-xs font-bold text-white">
-                      <Crown className="w-3.5 h-3.5 text-primary" />
-                      Selected: {activePlan.name} — ₹{activePlan.price}
-                    </div>
-                  )}
-                </div>
-
-                <form onSubmit={handleSubmit} className="space-y-5 sm:space-y-6" id="branding-form">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
-                    <div className="customization-input-group">
-                      <User className="customization-input-icon" />
-                      <input
-                        id="brand-name"
-                        type="text"
-                        name="name"
-                        placeholder="Full Name *"
-                        required
-                        value={formData.name}
-                        onChange={handleChange}
-                        className="customization-input"
-                      />
-                    </div>
-                    <div className="customization-input-group">
-                      <Mail className="customization-input-icon" />
-                      <input
-                        id="brand-email"
-                        type="email"
-                        name="email"
-                        placeholder="Email Address *"
-                        required
-                        value={formData.email}
-                        onChange={handleChange}
-                        className="customization-input"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
-                    <div className="customization-input-group">
-                      <Briefcase className="customization-input-icon" />
-                      <input
-                        id="brand-type"
-                        type="text"
-                        name="brandType"
-                        placeholder="Brand Type (e.g. Startup, Café)"
-                        value={formData.brandType}
-                        onChange={handleChange}
-                        className="customization-input"
-                      />
-                    </div>
-                    <div className="customization-input-group">
-                      <DollarSign className="customization-input-icon" />
-                      <input
-                        id="brand-budget"
-                        type="text"
-                        name="budget"
-                        placeholder="Budget Range"
-                        value={formData.budget}
-                        onChange={handleChange}
-                        className="customization-input"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="customization-input-group customization-textarea-group">
-                    <MessageSquare className="customization-input-icon customization-textarea-icon" />
-                    <textarea
-                      id="brand-message"
-                      name="message"
-                      placeholder="Tell us about your brand vision..."
-                      required
-                      rows={5}
-                      value={formData.message}
-                      onChange={handleChange}
-                      className="customization-input customization-textarea"
-                    />
-                  </div>
-
-                  <button
-                    id="brand-submit-btn"
-                    type="submit"
-                    disabled={loading}
-                    className="customization-submit-btn"
+        {/* Contact Section */}
+        <section id="contact" className="py-20 border-t border-gray-100">
+          <div className="max-w-3xl mx-auto">
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
+              {submitted ? (
+                <div className="bg-white p-12 rounded-xl border border-gray-100 shadow-2xl text-center">
+                  <motion.div
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-emerald-50 mb-6"
                   >
-                    {loading ? (
-                      <>
-                        <Loader2 className="animate-spin w-5 h-5" />
-                        <span>Sending...</span>
-                      </>
-                    ) : (
-                      <>
-                        <Send className="w-4 h-4 sm:w-5 sm:h-5" />
-                        <span>Send Branding Request</span>
-                      </>
-                    )}
+                    <CheckCircle2 className="w-10 h-10 text-emerald-500" />
+                  </motion.div>
+                  <h3 className="text-3xl font-bold text-dark mb-4">Request Sent!</h3>
+                  <p className="text-gray-text font-medium mb-8">
+                    Our branding team will review your request and get in touch within 24 hours.
+                  </p>
+                  <button
+                    onClick={() => setSubmitted(false)}
+                    className="text-primary font-bold uppercase text-xs tracking-widest hover:opacity-80 transition-opacity"
+                  >
+                    Submit Another Request →
                   </button>
-                </form>
+                </div>
+              ) : (
+                <div className="bg-white p-8 md:p-12 rounded-xl border border-gray-100 shadow-2xl shadow-dark/5">
+                  <div className="text-center mb-10">
+                    <span className="text-primary font-bold text-xs uppercase tracking-[0.3em] mb-4 block">Get Started</span>
+                    <h3 className="text-3xl font-bold text-dark mb-2">Tell us about your brand</h3>
+                    <p className="text-gray-text font-medium text-sm">Fill in your details and we&apos;ll craft the perfect branding package for you.</p>
+                  </div>
 
-                {/* Decorative */}
-                <div className="absolute -top-16 -left-16 w-48 h-48 bg-primary/10 blur-[80px] -z-10 rounded-full pointer-events-none"></div>
-                <div className="absolute -bottom-16 -right-16 w-48 h-48 bg-secondary/10 blur-[80px] -z-10 rounded-full pointer-events-none"></div>
-              </div>
-            )}
-          </motion.div>
-        </div>
-      </section>
+                  <form onSubmit={handleSubmit} className="space-y-6">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                      <div className="space-y-2">
+                        <label className="text-[10px] font-bold text-dark uppercase tracking-widest flex items-center gap-2">
+                          <User className="w-3 h-3 text-primary" /> Full Name
+                        </label>
+                        <input
+                          type="text"
+                          name="name"
+                          placeholder="John Doe *"
+                          required
+                          value={formData.name}
+                          onChange={handleChange}
+                          className="w-full bg-gray-50 border border-gray-100 p-4 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all text-sm font-medium"
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <label className="text-[10px] font-bold text-dark uppercase tracking-widest flex items-center gap-2">
+                          <Mail className="w-3 h-3 text-primary" /> Email Address
+                        </label>
+                        <input
+                          type="email"
+                          name="email"
+                          placeholder="john@example.com *"
+                          required
+                          value={formData.email}
+                          onChange={handleChange}
+                          className="w-full bg-gray-50 border border-gray-100 p-4 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all text-sm font-medium"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                      <div className="space-y-2">
+                        <label className="text-[10px] font-bold text-dark uppercase tracking-widest flex items-center gap-2">
+                          <Briefcase className="w-3 h-3 text-primary" /> Brand Type
+                        </label>
+                        <input
+                          type="text"
+                          name="brandType"
+                          placeholder="Brand Type (e.g. Startup, Café)"
+                          value={formData.brandType}
+                          onChange={handleChange}
+                          className="w-full bg-gray-50 border border-gray-100 p-4 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all text-sm font-medium"
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <label className="text-[10px] font-bold text-dark uppercase tracking-widest flex items-center gap-2">
+                          <DollarSign className="w-3 h-3 text-primary" /> Budget Range
+                        </label>
+                        <input
+                          type="text"
+                          name="budget"
+                          placeholder="Budget Range"
+                          value={formData.budget}
+                          onChange={handleChange}
+                          className="w-full bg-gray-50 border border-gray-100 p-4 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all text-sm font-medium"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="space-y-2">
+                      <label className="text-[10px] font-bold text-dark uppercase tracking-widest flex items-center gap-2">
+                        <MessageSquare className="w-3 h-3 text-primary" /> Brand Vision
+                      </label>
+                      <textarea
+                        name="message"
+                        placeholder="Tell us about your brand vision..."
+                        required
+                        rows={5}
+                        value={formData.message}
+                        onChange={handleChange}
+                        className="w-full bg-gray-50 border border-gray-100 p-4 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all text-sm font-medium resize-none"
+                      />
+                    </div>
+
+                    <button
+                      type="submit"
+                      disabled={loading}
+                      className="w-full bg-gradient text-white py-5 rounded-xl font-bold uppercase text-xs tracking-widest flex items-center justify-center gap-3 shadow-xl shadow-primary/20 hover:opacity-90 transition-all disabled:opacity-50"
+                    >
+                      {loading ? (
+                        <>
+                          <Loader2 className="animate-spin w-5 h-5" />
+                          <span>Sending...</span>
+                        </>
+                      ) : (
+                        <>
+                          <Send className="w-5 h-5" />
+                          <span>Send Branding Request</span>
+                        </>
+                      )}
+                    </button>
+                  </form>
+                </div>
+              )}
+            </motion.div>
+          </div>
+        </section>
+      </div>
     </div>
   );
 }

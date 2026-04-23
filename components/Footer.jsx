@@ -1,6 +1,6 @@
 "use client";
 import React from 'react';
-import { Mail, ExternalLink, Github, Linkedin } from 'lucide-react';
+import { Mail, ExternalLink } from 'lucide-react';
 import Link from 'next/link';
 
 const Footer = () => {
@@ -71,10 +71,10 @@ const Footer = () => {
             <h4 className="text-dark font-bold mb-6 text-xs uppercase tracking-widest">Connect</h4>
             <div className="flex flex-col gap-3 text-gray-text text-sm font-medium">
               <a href="#" className="hover:text-primary transition-colors flex items-center gap-2">
-                <Github className="w-4 h-4" /> GitHub
+                <ExternalLink className="w-4 h-4" /> GitHub
               </a>
               <a href="#" className="hover:text-primary transition-colors flex items-center gap-2">
-                <Linkedin className="w-4 h-4" /> LinkedIn
+                <ExternalLink className="w-4 h-4" /> LinkedIn
               </a>
               <a href="mailto:mohammedrizwan9c@gmail.com" className="hover:text-primary transition-colors flex items-center gap-2">
                 <Mail className="w-4 h-4" /> mohammedrizwan9c@gmail.com
