@@ -2,16 +2,13 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import {
-  Sparkles, ArrowRight, CheckCircle2, Star,
+  Sparkles, ArrowRight, CheckCircle2,
   Paintbrush, Palette, Layout, Share2,
   Send, Loader2, User, Mail, MessageSquare,
-  DollarSign, Briefcase, Crown, Zap, Eye
+  DollarSign, Briefcase, Crown, Zap
 } from 'lucide-react';
-import Link from 'next/link';
 import axios from 'axios';
 import toast from 'react-hot-toast';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
 
 /* ─────────────── DATA ─────────────── */
 
@@ -97,13 +94,13 @@ const showcaseProjects = [
 
 const colorPalettes = [
   {
-    name: "Modern Purple",
+    name: "Pastel Elegance",
     colors: [
-      { hex: "#6C63FF", light: false },
-      { hex: "#8B5CF6", light: false },
-      { hex: "#A78BFA", light: false },
-      { hex: "#C4B5FD", light: true },
-      { hex: "#EDE9FE", light: true },
+      { hex: "#E6C7C7", light: true },
+      { hex: "#E9DED4", light: true },
+      { hex: "#F3E4CF", light: true },
+      { hex: "#E7C2A3", light: true },
+      { hex: "#1A1A1A", light: false },
     ],
   },
   {
@@ -114,26 +111,6 @@ const colorPalettes = [
       { hex: "#FFF5CC", light: true },
       { hex: "#1F2937", light: false },
       { hex: "#111827", light: false },
-    ],
-  },
-  {
-    name: "Dark Tech",
-    colors: [
-      { hex: "#0F172A", light: false },
-      { hex: "#1E293B", light: false },
-      { hex: "#334155", light: false },
-      { hex: "#6366F1", light: false },
-      { hex: "#22D3EE", light: false },
-    ],
-  },
-  {
-    name: "Minimal Clean",
-    colors: [
-      { hex: "#FFFFFF", light: true },
-      { hex: "#F1F5F9", light: true },
-      { hex: "#E2E8F0", light: true },
-      { hex: "#64748B", light: false },
-      { hex: "#0F172A", light: false },
     ],
   },
 ];
@@ -196,41 +173,33 @@ export default function BrandingPage() {
   };
 
   return (
-    <div className="relative min-h-screen">
-      <Navbar />
-
-      <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12 pt-32 pb-24">
+    <div className="relative min-h-screen bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-24">
         
         {/* ══════════ 1. HERO ══════════ */}
-        <section className="py-20 md:py-32 border-b border-white/5 mb-20 text-center">
+        <section className="py-20 md:py-32 border-b border-gray-100 mb-20 text-center bg-hero-gradient rounded-px-lg">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="max-w-4xl mx-auto"
+              className="max-w-4xl mx-auto px-4"
             >
-              <span className="inline-block px-4 py-1.5 glass rounded-full text-primary text-[10px] font-black uppercase tracking-[0.2em] mb-8">
-                <Sparkles className="inline w-3 h-3 mr-1 -mt-0.5" /> Branding Services
+              <span className="inline-block px-4 py-1.5 bg-white/50 backdrop-blur-sm rounded-full text-text-primary text-[10px] font-black uppercase tracking-[0.2em] mb-8 border border-white/20">
+                <Sparkles className="inline w-3 h-3 mr-1 -mt-0.5 text-primary" /> Branding Services
               </span>
-              <h1 className="text-5xl md:text-7xl font-bold text-white mb-8 leading-tight">
+              <h1 className="text-5xl md:text-7xl font-black text-text-primary mb-8 leading-tight">
                 Build a Powerful <br />
-                <span className="text-gradient">Brand Identity</span>
+                <span className="text-pastel-gradient">Brand Identity</span>
               </h1>
-              <p className="text-gray-400 leading-relaxed text-lg md:text-xl mb-12 max-w-2xl mx-auto font-medium">
+              <p className="text-text-secondary leading-relaxed text-lg md:text-xl mb-12 max-w-2xl mx-auto font-bold">
                 We don&apos;t just build websites — we craft complete digital brands that stand out and
                 leave a lasting impression.
               </p>
               <div className="flex flex-col sm:flex-row gap-6 justify-center">
                 <a
                   href="#pricing"
-                  className="bg-gradient text-white px-10 py-5 rounded-2xl text-lg font-bold hover:opacity-95 transition-all flex items-center justify-center gap-3 shadow-xl shadow-primary/20"
+                  className="btn-pastel px-10 py-5 rounded-2xl text-lg shadow-xl shadow-primary/20"
                 >
-                  Start Your Brand <ArrowRight className="w-5 h-5" />
-                </a>
-                <a
-                  href="#services"
-                  className="glass text-white px-10 py-5 rounded-2xl text-lg font-bold hover:bg-white/10 transition-all border border-white/10 text-center"
-                >
-                  Explore Services
+                  Start Your Brand <ArrowRight className="w-5 h-5 ml-2" />
                 </a>
               </div>
             </motion.div>
@@ -243,7 +212,7 @@ export default function BrandingPage() {
               <span className="text-primary font-black text-xs uppercase tracking-[0.3em] mb-4 block">
                 What We Offer
               </span>
-              <h2 className="text-3xl md:text-5xl font-bold text-white">Our Branding Services</h2>
+              <h2 className="text-3xl md:text-5xl font-black text-text-primary">Our Branding Services</h2>
             </motion.div>
           </div>
 
@@ -256,85 +225,30 @@ export default function BrandingPage() {
                 whileInView="visible"
                 viewport={{ once: true }}
                 variants={fadeUp}
-                className="glass p-8 rounded-px-lg text-center border-white/5 relative group glossy"
+                className="pastel-card p-8 text-center group"
               >
                 <div className={`inline-flex p-4 rounded-2xl mb-6 transition-transform group-hover:scale-110 ${
                   s.color === 'primary' ? 'bg-primary/10 text-primary' :
                   s.color === 'secondary' ? 'bg-secondary/10 text-secondary' :
-                  'bg-accent/10 text-accent'
+                  'bg-orange-100 text-orange-500'
                 }`}>
                   {s.icon}
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3 group-hover:text-primary transition-colors">{s.title}</h3>
-                <p className="text-gray-400 leading-relaxed text-sm font-medium">{s.desc}</p>
+                <h3 className="text-xl font-black text-text-primary mb-3 group-hover:text-primary transition-colors">{s.title}</h3>
+                <p className="text-text-secondary leading-relaxed text-sm font-bold">{s.desc}</p>
               </motion.div>
             ))}
           </div>
         </section>
 
-        {/* ══════════ 3. COLOR PALETTES ══════════ */}
-        <section className="py-20 border-t border-white/5 mb-20">
-          <div className="text-center mb-16">
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
-              <span className="text-primary font-black text-xs uppercase tracking-[0.3em] mb-4 block">
-                Design Systems
-              </span>
-              <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Color Palettes We Create</h2>
-              <p className="text-gray-400 leading-relaxed max-w-xl mx-auto text-lg font-medium">
-                Carefully crafted color systems that define your brand identity.
-              </p>
-            </motion.div>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {colorPalettes.map((palette, i) => (
-              <motion.div
-                key={i}
-                custom={i}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={fadeUp}
-                className="glass rounded-px-lg border-white/5 overflow-hidden group hover:scale-[1.03] transition-all duration-500 glossy"
-              >
-                <div className="flex h-32">
-                  {palette.colors.map((c, j) => (
-                    <div
-                      key={j}
-                      className="flex-1 transition-all duration-500 group-hover:flex-[1.3] hover:!flex-[2]"
-                      style={{ backgroundColor: c.hex }}
-                    />
-                  ))}
-                </div>
-                <div className="p-6">
-                  <h4 className="text-white font-bold mb-3">{palette.name}</h4>
-                  <div className="flex flex-wrap gap-2">
-                    {palette.colors.map((c, j) => (
-                      <span
-                        key={j}
-                        className="text-[10px] font-mono font-bold px-2 py-1 rounded-md bg-white/5 text-gray-500 border border-white/10"
-                      >
-                        {c.hex}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </section>
-
-        {/* ══════════ 4. PRICING ══════════ */}
-        <section id="pricing" className="py-20 border-t border-white/5 mb-20">
+        {/* ══════════ 3. PRICING ══════════ */}
+        <section id="pricing" className="py-20 border-t border-gray-100 mb-20">
           <div className="text-center mb-16">
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
               <span className="text-primary font-black text-xs uppercase tracking-[0.3em] mb-4 block">
                 Transparent Pricing
               </span>
-              <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Branding Packages</h2>
-              <p className="text-gray-400 leading-relaxed max-w-xl mx-auto text-lg font-medium">
-                Choose the plan that fits your vision. Every package is crafted to deliver maximum impact.
-              </p>
+              <h2 className="text-3xl md:text-5xl font-black text-text-primary mb-6">Branding Packages</h2>
             </motion.div>
           </div>
 
@@ -348,38 +262,38 @@ export default function BrandingPage() {
                 viewport={{ once: true }}
                 variants={fadeUp}
                 onClick={() => setSelectedPlan(plan.key)}
-                className={`relative p-10 rounded-px-lg cursor-pointer transition-all duration-500 border-2 overflow-hidden glass glossy ${
+                className={`relative p-10 rounded-px-lg cursor-pointer transition-all duration-500 border flex flex-col h-full ${
                   plan.highlight
-                    ? 'ring-2 ring-primary border-primary/50 shadow-2xl shadow-primary/20 scale-[1.05] z-10'
+                    ? 'bg-hero-gradient border-primary/20 shadow-2xl shadow-primary/10 scale-105 z-10'
                     : selectedPlan === plan.key
-                      ? 'border-primary/40 bg-primary/5'
-                      : 'border-white/5 hover:border-white/10'
+                      ? 'bg-primary/5 border-primary/40'
+                      : 'bg-white border-gray-100 hover:border-gray-200 shadow-xl shadow-dark/5'
                 }`}
               >
                 {plan.tag && (
-                  <div className="absolute top-0 right-8 bg-gradient px-4 py-1.5 rounded-b-xl text-white text-[8px] font-black uppercase tracking-widest z-20">
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 bg-white px-4 py-1.5 rounded-b-xl text-[8px] font-black uppercase tracking-widest text-primary border border-t-0 border-primary/20 shadow-sm">
                     {plan.tag}
                   </div>
                 )}
 
                 <div className={`inline-flex p-3 rounded-xl mb-6 transition-colors ${
                   selectedPlan === plan.key || plan.highlight
-                    ? 'bg-primary text-white'
-                    : 'bg-white/10 text-gray-500'
+                    ? 'bg-white text-primary shadow-sm'
+                    : 'bg-primary/10 text-primary'
                 }`}>
                   {plan.icon}
                 </div>
 
-                <h3 className="text-white font-bold text-xl mb-2">{plan.name}</h3>
+                <h3 className="text-text-primary font-black text-xl mb-2">{plan.name}</h3>
                 <div className="flex items-baseline gap-1 mb-8">
-                  <span className="text-4xl font-black text-white">₹{plan.price}</span>
-                  <span className="text-gray-500 text-xs font-bold uppercase tracking-widest">/ Project</span>
+                  <span className="text-4xl font-black text-text-primary">₹{plan.price}</span>
+                  <span className="text-text-secondary text-xs font-bold uppercase tracking-widest">/ Project</span>
                 </div>
 
-                <ul className="space-y-4 mb-10">
+                <ul className="space-y-4 mb-10 flex-1">
                   {plan.features.map((f, j) => (
-                    <li key={j} className="flex items-center gap-3 text-gray-400 text-sm font-medium">
-                      <CheckCircle2 className={`w-4 h-4 shrink-0 ${plan.highlight || selectedPlan === plan.key ? 'text-primary' : 'text-gray-600'}`} />
+                    <li key={j} className="flex items-center gap-3 text-text-secondary text-sm font-bold">
+                      <CheckCircle2 className={`w-4 h-4 shrink-0 ${plan.highlight || selectedPlan === plan.key ? 'text-text-primary' : 'text-primary'}`} />
                       {f}
                     </li>
                   ))}
@@ -388,8 +302,8 @@ export default function BrandingPage() {
                 <button
                   className={`w-full py-4 rounded-xl font-black uppercase text-xs tracking-widest transition-all ${
                     plan.highlight || selectedPlan === plan.key
-                      ? 'bg-gradient text-white shadow-lg shadow-primary/20 hover:opacity-90'
-                      : 'bg-white/5 text-white border border-white/10 hover:bg-white/10'
+                      ? 'bg-white text-text-primary shadow-lg hover:bg-gray-50'
+                      : 'btn-pastel shadow-lg shadow-primary/10'
                   }`}
                 >
                   Get Started
@@ -399,14 +313,14 @@ export default function BrandingPage() {
           </div>
         </section>
 
-        {/* ══════════ 5. SHOWCASE ══════════ */}
-        <section className="py-20 border-t border-white/5 mb-20">
+        {/* ══════════ 4. SHOWCASE ══════════ */}
+        <section className="py-20 border-t border-gray-100 mb-20">
           <div className="text-center mb-16">
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
               <span className="text-primary font-black text-xs uppercase tracking-[0.3em] mb-4 block">
                 Our Portfolio
               </span>
-              <h2 className="text-3xl md:text-5xl font-bold text-white">Branding Showcase</h2>
+              <h2 className="text-3xl md:text-5xl font-black text-text-primary">Branding Showcase</h2>
             </motion.div>
           </div>
 
@@ -419,7 +333,7 @@ export default function BrandingPage() {
                 whileInView="visible"
                 viewport={{ once: true }}
                 variants={fadeUp}
-                className="group relative overflow-hidden rounded-px-lg glass border border-white/5 glossy"
+                className="group relative overflow-hidden rounded-px-lg pastel-card"
               >
                 <div className="aspect-[4/5] overflow-hidden">
                   <img
@@ -428,54 +342,54 @@ export default function BrandingPage() {
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
                 </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-dark via-dark/40 to-transparent opacity-80 group-hover:opacity-95 transition-opacity duration-500"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 <div className="absolute bottom-0 left-0 right-0 p-8 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
                   <span className="text-primary text-[10px] font-black uppercase tracking-[0.2em] block mb-2">
                     {p.category}
                   </span>
-                  <h4 className="text-white font-bold text-xl">{p.title}</h4>
+                  <h4 className="text-white font-black text-xl">{p.title}</h4>
                 </div>
               </motion.div>
             ))}
           </div>
         </section>
 
-        {/* ══════════ 6. CONTACT SECTION ══════════ */}
-        <section id="contact" className="py-20 border-t border-white/5">
+        {/* ══════════ 5. CONTACT SECTION ══════════ */}
+        <section id="contact" className="py-20 border-t border-gray-100 bg-[#f8f8f8] -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto">
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
               {submitted ? (
-                <div className="glass p-12 rounded-px-lg text-center glossy">
+                <div className="bg-white p-12 rounded-px-lg text-center shadow-xl">
                   <motion.div
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
-                    className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-emerald-500/10 mb-6"
+                    className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-emerald-50 mb-6"
                   >
-                    <CheckCircle2 className="w-10 h-10 text-emerald-400" />
+                    <CheckCircle2 className="w-10 h-10 text-emerald-500" />
                   </motion.div>
-                  <h3 className="text-3xl font-bold text-white mb-4">Request Sent!</h3>
-                  <p className="text-gray-400 font-medium mb-8">
+                  <h3 className="text-3xl font-black text-text-primary mb-4">Request Sent!</h3>
+                  <p className="text-text-secondary font-bold mb-8">
                     Our branding team will review your request and get in touch within 24 hours.
                   </p>
                   <button
                     onClick={() => setSubmitted(false)}
-                    className="text-primary font-black uppercase text-xs tracking-widest hover:text-white transition-all"
+                    className="text-primary font-black uppercase text-xs tracking-widest hover:text-text-primary transition-all"
                   >
                     Submit Another Request →
                   </button>
                 </div>
               ) : (
-                <div className="glass p-8 md:p-12 rounded-px-lg border-white/5 glossy">
+                <div className="bg-white p-8 md:p-12 rounded-px-lg border border-gray-100 shadow-2xl">
                   <div className="text-center mb-10">
                     <span className="text-primary font-black text-xs uppercase tracking-[0.3em] mb-4 block">Get Started</span>
-                    <h3 className="text-3xl font-bold text-white mb-2">Tell us about your brand</h3>
-                    <p className="text-gray-500 font-medium text-sm">Fill in your details and we&apos;ll craft the perfect branding package for you.</p>
+                    <h3 className="text-3xl font-black text-text-primary mb-2">Tell us about your brand</h3>
+                    <p className="text-text-secondary font-bold text-sm">Fill in your details and we&apos;ll craft the perfect branding package for you.</p>
                   </div>
 
                   <form onSubmit={handleSubmit} className="space-y-6">
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                       <div className="space-y-2">
-                        <label className="text-[10px] font-bold text-gray-500 uppercase tracking-widest flex items-center gap-2 px-2">
+                        <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest flex items-center gap-2 px-2">
                           <User className="w-3 h-3 text-primary" /> Full Name
                         </label>
                         <input
@@ -485,11 +399,11 @@ export default function BrandingPage() {
                           required
                           value={formData.name}
                           onChange={handleChange}
-                          className="glass-input"
+                          className="pastel-input"
                         />
                       </div>
                       <div className="space-y-2">
-                        <label className="text-[10px] font-bold text-gray-500 uppercase tracking-widest flex items-center gap-2 px-2">
+                        <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest flex items-center gap-2 px-2">
                           <Mail className="w-3 h-3 text-primary" /> Email Address
                         </label>
                         <input
@@ -499,42 +413,13 @@ export default function BrandingPage() {
                           required
                           value={formData.email}
                           onChange={handleChange}
-                          className="glass-input"
-                        />
-                      </div>
-                    </div>
-
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                      <div className="space-y-2">
-                        <label className="text-[10px] font-bold text-gray-500 uppercase tracking-widest flex items-center gap-2 px-2">
-                          <Briefcase className="w-3 h-3 text-primary" /> Brand Type
-                        </label>
-                        <input
-                          type="text"
-                          name="brandType"
-                          placeholder="Startup, Cafe, etc."
-                          value={formData.brandType}
-                          onChange={handleChange}
-                          className="glass-input"
-                        />
-                      </div>
-                      <div className="space-y-2">
-                        <label className="text-[10px] font-bold text-gray-500 uppercase tracking-widest flex items-center gap-2 px-2">
-                          <DollarSign className="w-3 h-3 text-primary" /> Budget Range
-                        </label>
-                        <input
-                          type="text"
-                          name="budget"
-                          placeholder="Expected budget"
-                          value={formData.budget}
-                          onChange={handleChange}
-                          className="glass-input"
+                          className="pastel-input"
                         />
                       </div>
                     </div>
 
                     <div className="space-y-2">
-                      <label className="text-[10px] font-bold text-gray-500 uppercase tracking-widest flex items-center gap-2 px-2">
+                      <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest flex items-center gap-2 px-2">
                         <MessageSquare className="w-3 h-3 text-primary" /> Brand Vision
                       </label>
                       <textarea
@@ -544,14 +429,14 @@ export default function BrandingPage() {
                         rows={5}
                         value={formData.message}
                         onChange={handleChange}
-                        className="glass-input min-h-[160px] resize-none"
+                        className="pastel-input min-h-[160px] resize-none"
                       />
                     </div>
 
                     <button
                       type="submit"
                       disabled={loading}
-                      className="w-full bg-gradient text-white py-5 rounded-2xl font-black uppercase text-xs tracking-widest flex items-center justify-center gap-3 shadow-xl shadow-primary/20 hover:opacity-90 transition-all disabled:opacity-50"
+                      className="btn-pastel w-full py-5 text-xs uppercase tracking-widest shadow-xl shadow-primary/20 disabled:opacity-50"
                     >
                       {loading ? (
                         <>
@@ -572,8 +457,6 @@ export default function BrandingPage() {
           </div>
         </section>
       </div>
-
-      <Footer />
     </div>
   );
 }

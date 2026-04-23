@@ -3,8 +3,6 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Sparkles, LayoutGrid, Filter, Search } from 'lucide-react';
 import ProjectCard from '@/components/ProjectCard';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
 
 const projectsData = [
   {
@@ -64,11 +62,9 @@ export default function Projects() {
     : projectsData.filter(p => p.category === filter);
 
   return (
-    <div className="relative min-h-screen">
-      <Navbar />
-      
-      <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12 pt-32 pb-24">
-        <header className="mb-16 flex flex-col lg:flex-row lg:items-end justify-between gap-10 border-b border-white/5 pb-12">
+    <div className="relative min-h-screen bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-24">
+        <header className="mb-16 flex flex-col lg:flex-row lg:items-end justify-between gap-10 border-b border-gray-100 pb-12">
           <div className="max-w-2xl text-center lg:text-left">
              <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -77,25 +73,25 @@ export default function Projects() {
                 <div className="flex items-center justify-center lg:justify-start gap-3 text-primary text-xs font-black uppercase tracking-[0.3em] mb-4">
                   <Sparkles className="w-4 h-4" /> Ready-to-Launch
                 </div>
-                <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
+                <h1 className="text-4xl md:text-6xl font-black text-text-primary mb-6 leading-tight">
                    Project Catalog
                 </h1>
-                <p className="text-gray-400 leading-relaxed text-lg font-medium">
+                <p className="text-text-secondary leading-relaxed text-lg font-bold">
                   Premium ready-made web solutions designed to help your business scale instantly. 
-                  Now featuring our recently launched <span className="text-white font-bold">Live Deployments</span>.
+                  Now featuring our recently launched <span className="text-text-primary font-black underline decoration-primary/30">Live Deployments</span>.
                 </p>
              </motion.div>
           </div>
           
-          <div className="flex flex-wrap items-center justify-center lg:justify-end gap-2 p-2 glass rounded-2xl border border-white/5 glossy">
+          <div className="flex flex-wrap items-center justify-center lg:justify-end gap-2 p-2 bg-[#f9f9f9] rounded-2xl border border-gray-100">
             {categories.map(cat => (
               <button
                 key={cat}
                 onClick={() => setFilter(cat)}
                 className={`px-6 py-2.5 rounded-xl text-[10px] font-black transition-all uppercase tracking-widest ${
                   filter === cat 
-                  ? 'bg-gradient text-white shadow-lg shadow-primary/20' 
-                  : 'text-gray-500 hover:text-white hover:bg-white/5'
+                  ? 'bg-white text-text-primary shadow-sm border border-gray-100' 
+                  : 'text-text-secondary hover:text-text-primary'
                 }`}
               >
                 {cat}
@@ -121,12 +117,6 @@ export default function Projects() {
           ))}
         </motion.main>
       </div>
-
-      {/* Decorative Blurs */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 blur-[120px] -z-10 rounded-full" />
-      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-secondary/5 blur-[100px] -z-10 rounded-full" />
-
-      <Footer />
     </div>
   );
 }
