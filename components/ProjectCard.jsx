@@ -9,10 +9,10 @@ const ProjectCard = ({ project }) => {
 
   return (
     <motion.div 
-      whileHover={{ y: -10, scale: 1.02 }}
-      className={`glass rounded-[2rem] overflow-hidden group border border-white/5 transition-all duration-500 hover:shadow-xl ${isLive ? 'border-primary/20' : ''}`}
+      whileHover={{ y: -8 }}
+      className={`bg-white rounded-px-lg overflow-hidden group border border-gray-100 transition-all duration-300 hover:shadow-xl ${isLive ? 'border-primary/20' : ''}`}
     >
-      <div className="relative h-64 sm:h-72 overflow-hidden">
+      <div className="relative h-64 overflow-hidden">
         <img 
           src={project.image} 
           alt={project.title} 
@@ -20,25 +20,25 @@ const ProjectCard = ({ project }) => {
         />
         
         {/* Badges */}
-        <div className="absolute top-4 sm:top-5 left-4 sm:left-5 flex gap-2">
+        <div className="absolute top-4 left-4 flex gap-2">
           {isLive && (
-            <div className="bg-gradient-to-r from-primary to-secondary px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl flex items-center gap-1.5 shadow-2xl animate-pulse">
-              <Sparkles className="w-3.5 h-3.5 text-white" />
-              <span className="text-[10px] font-black text-white uppercase tracking-[0.2em]">Live Project</span>
+            <div className="bg-gradient text-white px-3 py-1.5 rounded-full flex items-center gap-1.5 shadow-lg shadow-primary/20">
+              <Sparkles className="w-3 h-3 text-white" />
+              <span className="text-[10px] font-bold uppercase tracking-wider">Live</span>
             </div>
           )}
         </div>
 
-        <div className="absolute top-4 sm:top-5 right-4 sm:right-5 bg-slate-900/80 backdrop-blur-md px-3 sm:px-4 py-1.5 rounded-full flex items-center gap-1.5 border border-white/10 shadow-xl">
+        <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-md px-3 py-1.5 rounded-full flex items-center gap-1.5 border border-gray-200 shadow-sm">
           <Tag className="w-3 h-3 text-primary" />
-          <span className="text-[10px] font-black text-white uppercase tracking-widest">{project.category}</span>
+          <span className="text-[10px] font-bold text-dark uppercase tracking-wider">{project.category}</span>
         </div>
       </div>
       
-      <div className="p-6 sm:p-10 text-center">
-        <div className="mb-6 sm:mb-8">
-          <h3 className="text-xl font-bold text-white group-hover:text-primary transition-colors mb-2">{project.title}</h3>
-          <p className="text-gray-400 leading-relaxed text-sm">
+      <div className="p-6">
+        <div className="mb-6">
+          <h3 className="text-xl font-bold text-dark group-hover:text-primary transition-colors mb-2">{project.title}</h3>
+          <p className="text-gray-text leading-relaxed text-sm font-medium">
             {project.description}
           </p>
         </div>
@@ -49,17 +49,17 @@ const ProjectCard = ({ project }) => {
               href={project.liveUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full flex items-center justify-center gap-2 text-white bg-primary/20 hover:bg-primary/40 px-6 sm:px-8 py-3.5 sm:py-4 rounded-2xl transition-all border border-primary/20 group/btn shadow-lg hover:shadow-primary/20"
+              className="w-full flex items-center justify-center gap-2 text-white bg-primary hover:bg-primary-hover px-6 py-3.5 rounded-xl transition-all shadow-md hover:shadow-primary/20 group/btn"
             >
-              <span className="text-[10px] sm:text-xs font-black uppercase tracking-[0.2em]">View Live</span>
+              <span className="text-xs font-bold uppercase tracking-widest">View Live</span>
               <ExternalLink className="w-4 h-4 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
             </a>
           ) : (
             <Link 
               href={`/projects/${project.id}`}
-              className="w-full flex items-center justify-center gap-2 text-white bg-white/5 hover:bg-white/10 px-6 sm:px-8 py-3.5 sm:py-4 rounded-2xl transition-all border border-white/10 group/btn hover:shadow-xl"
+              className="w-full flex items-center justify-center gap-2 text-dark bg-gray-50 hover:bg-gray-100 px-6 py-3.5 rounded-xl transition-all border border-gray-200 group/btn"
             >
-              <span className="text-[10px] sm:text-xs font-black uppercase tracking-[0.2em]">View Details</span>
+              <span className="text-xs font-bold uppercase tracking-widest">View Details</span>
               <ChevronRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
             </Link>
           )}
@@ -68,5 +68,7 @@ const ProjectCard = ({ project }) => {
     </motion.div>
   );
 };
+
+export default ProjectCard;
 
 export default ProjectCard;

@@ -82,55 +82,55 @@ export default function ProjectDetails() {
     }
   }, [id]);
 
-  if (!project) return <div className="pt-40 text-center text-white font-black text-2xl">Project not found.</div>;
+  if (!project) return <div className="pt-40 text-center text-dark font-bold text-2xl">Project not found.</div>;
 
   return (
-    <div className="py-16 md:py-24 min-h-screen">
-      <div>
+    <div className="py-24 md:py-32 bg-white min-h-screen">
+      <div className="max-w-7xl mx-auto px-4 md:px-8">
         <Link 
           href="/projects"
-          className="inline-flex items-center gap-2 text-slate-500 hover:text-white mb-8 sm:mb-12 transition-colors group text-sm font-bold uppercase tracking-widest"
+          className="inline-flex items-center gap-2 text-gray-400 hover:text-dark mb-8 sm:mb-12 transition-colors group text-sm font-bold uppercase tracking-widest"
         >
           <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" /> Back to Assets
         </Link>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-16">
-          {/* Left: Content (Image stays on top on mobile) */}
+          {/* Left: Content */}
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
           >
-            <div className="glass rounded-[2rem] sm:rounded-[2.5rem] overflow-hidden mb-8 sm:mb-12 border-white/5 shadow-2xl relative group">
+            <div className="bg-white rounded-px-lg overflow-hidden mb-8 border border-gray-100 shadow-2xl relative group">
               <img src={project.image} alt={project.title} className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105" />
               {project.isLive && (
-                <div className="absolute top-4 sm:top-6 left-4 sm:left-6 bg-gradient px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl text-white text-[9px] sm:text-[10px] font-black uppercase tracking-widest flex items-center gap-2 shadow-2xl">
+                <div className="absolute top-6 left-6 bg-gradient px-4 py-2 rounded-xl text-white text-[10px] font-bold uppercase tracking-widest flex items-center gap-2 shadow-xl">
                   <Sparkles className="w-3 h-3" /> Live Project
                 </div>
               )}
             </div>
             
             <div className="lg:block">
-              <div className="flex items-center gap-3 text-primary text-[10px] sm:text-xs font-black uppercase tracking-[0.3em] mb-4">
+              <div className="flex items-center gap-3 text-primary text-xs font-bold uppercase tracking-[0.3em] mb-4">
                 <Sparkles className="w-4 h-4" /> Comprehensive Solution
               </div>
-              <h1 className="text-4xl md:text-6xl font-bold leading-tight text-white mb-6">
+              <h1 className="text-4xl md:text-6xl font-bold leading-tight text-dark mb-6">
                 {project.title}
               </h1>
               
-              <p className="text-gray-400 leading-relaxed text-lg mb-10">
+              <p className="text-gray-text leading-relaxed text-lg mb-10 font-medium">
                 {project.description}
               </p>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-10 lg:mb-0">
-                <div className="glass p-6 sm:p-8 rounded-[1.5rem] sm:rounded-[2rem] border-white/5 group hover:border-primary/30 transition-all">
-                  <Globe className="text-primary w-5 h-5 sm:w-6 sm:h-6 mb-4" />
-                  <h4 className="text-white font-bold mb-2 text-sm sm:text-base">Live Demo</h4>
-                  <p className="text-slate-500 text-xs sm:text-sm leading-relaxed">Interactive staging environment ready for exploration.</p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-10 lg:mb-0">
+                <div className="bg-white p-8 rounded-px-lg border border-gray-100 group hover:border-primary/30 shadow-sm transition-all">
+                  <Globe className="text-primary w-6 h-6 mb-4" />
+                  <h4 className="text-dark font-bold mb-2">Live Demo</h4>
+                  <p className="text-gray-text text-sm leading-relaxed font-medium">Interactive staging environment ready for exploration.</p>
                 </div>
-                <div className="glass p-6 sm:p-8 rounded-[1.5rem] sm:rounded-[2rem] border-white/5 group hover:border-secondary/30 transition-all">
-                  <Cpu className="text-secondary w-5 h-5 sm:w-6 sm:h-6 mb-4" />
-                  <h4 className="text-white font-bold mb-2 text-sm sm:text-base">Build Quality</h4>
-                  <p className="text-slate-500 text-xs sm:text-sm leading-relaxed">Enterprise-grade architecture with 99.9% uptime targets.</p>
+                <div className="bg-white p-8 rounded-px-lg border border-gray-100 group hover:border-primary/30 shadow-sm transition-all">
+                  <Cpu className="text-primary w-6 h-6 mb-4" />
+                  <h4 className="text-dark font-bold mb-2">Build Quality</h4>
+                  <p className="text-gray-text text-sm leading-relaxed font-medium">Enterprise-grade architecture with 99.9% uptime targets.</p>
                 </div>
               </div>
             </div>
@@ -138,18 +138,18 @@ export default function ProjectDetails() {
 
           {/* Right: Sidebar */}
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
             className="lg:sticky lg:top-40 h-fit"
           >
-            <div className="glass p-8 sm:p-10 rounded-[2rem] sm:rounded-[2.5rem] border-white/10 relative overflow-hidden">
-              <div className="mb-8 sm:mb-10 pb-8 sm:pb-10 border-b border-white/5">
-                <h3 className="text-white font-bold mb-4 sm:mb-6 text-xs sm:text-sm uppercase tracking-widest">Included Features</h3>
-                <ul className="space-y-3 sm:space-y-4">
+            <div className="bg-white p-8 md:p-10 rounded-px-lg border border-gray-100 shadow-2xl shadow-dark/5 relative overflow-hidden">
+              <div className="mb-10 pb-10 border-b border-gray-100">
+                <h3 className="text-dark font-bold mb-6 text-xs uppercase tracking-widest">Included Features</h3>
+                <ul className="space-y-4">
                   {project.features.map((f, i) => (
-                    <li key={i} className="flex items-center gap-3 sm:gap-4 text-slate-400 text-xs sm:text-sm">
-                      <div className="bg-primary/20 p-1 rounded-full shrink-0">
-                        <CheckCircle2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-primary" />
+                    <li key={i} className="flex items-center gap-4 text-gray-text text-sm font-medium">
+                      <div className="bg-primary/10 p-1 rounded-full shrink-0">
+                        <CheckCircle2 className="w-4 h-4 text-primary" />
                       </div>
                       {f}
                     </li>
@@ -157,11 +157,11 @@ export default function ProjectDetails() {
                 </ul>
               </div>
 
-              <div className="mb-10 sm:mb-12">
-                <h3 className="text-white font-bold mb-4 sm:mb-6 text-xs sm:text-sm uppercase tracking-widest">Technology Stack</h3>
+              <div className="mb-12">
+                <h3 className="text-dark font-bold mb-6 text-xs uppercase tracking-widest">Technology Stack</h3>
                 <div className="flex flex-wrap gap-2">
                   {project.stack.map((s, i) => (
-                    <span key={i} className="bg-white/5 border border-white/10 px-3 sm:px-4 py-1 sm:py-1.5 rounded-full text-[10px] sm:text-xs font-bold text-white">
+                    <span key={i} className="bg-gray-50 border border-gray-200 px-4 py-1.5 rounded-full text-xs font-bold text-gray-600">
                       {s}
                     </span>
                   ))}
@@ -174,14 +174,14 @@ export default function ProjectDetails() {
                     href={project.liveUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full bg-gradient text-white py-4 sm:py-5 rounded-xl sm:rounded-2xl font-black uppercase text-[10px] sm:text-xs tracking-[0.2em] hover:opacity-90 active:scale-[0.98] transition-all text-center flex items-center justify-center gap-3 shadow-xl shadow-primary/20"
+                    className="w-full bg-gradient text-white py-5 rounded-xl font-bold uppercase text-xs tracking-widest hover:opacity-90 active:scale-[0.98] transition-all text-center flex items-center justify-center gap-3 shadow-xl shadow-primary/20"
                   >
                     View Live Project <Globe className="w-4 h-4" />
                   </a>
                 ) : (
                   <button 
                     onClick={() => setShowBooking(true)}
-                    className="w-full bg-gradient text-white py-4 sm:py-5 rounded-xl sm:rounded-2xl font-black uppercase text-[10px] sm:text-xs tracking-[0.2em] hover:opacity-90 active:scale-[0.98] transition-all shadow-xl shadow-primary/20"
+                    className="w-full bg-gradient text-white py-5 rounded-xl font-bold uppercase text-xs tracking-widest hover:opacity-90 active:scale-[0.98] transition-all shadow-xl shadow-primary/20"
                   >
                     Start Building Now
                   </button>
@@ -195,17 +195,14 @@ export default function ProjectDetails() {
                       }, 100);
                     }
                   }}
-                  className={`w-full glass py-4 sm:py-5 rounded-xl sm:rounded-2xl text-white font-bold uppercase text-[10px] sm:text-xs tracking-[0.1em] hover:bg-white/10 transition-all border ${
-                    showCustomForm ? 'border-primary/40 bg-primary/10' : 'border-white/5'
+                  className={`w-full py-5 rounded-xl font-bold uppercase text-xs tracking-widest transition-all border ${
+                    showCustomForm ? 'bg-primary/5 border-primary/20 text-primary' : 'bg-gray-50 border-gray-200 text-dark hover:bg-gray-100'
                   } flex items-center justify-center gap-2`}
                 >
                   <Palette className="w-4 h-4" />
                   {showCustomForm ? 'Hide Form' : 'Request Customization'}
                 </button>
               </div>
-
-              {/* Decorative Blur */}
-              <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-primary/20 blur-3xl -z-10 rounded-full"></div>
             </div>
           </motion.div>
         </div>
@@ -217,7 +214,7 @@ export default function ProjectDetails() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="mt-12 sm:mt-16 max-w-3xl mx-auto"
+            className="mt-16 max-w-3xl mx-auto"
           >
             <CustomizationForm projectName={project.title} />
           </motion.div>

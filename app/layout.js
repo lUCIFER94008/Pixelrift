@@ -25,10 +25,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${poppins.variable} antialiased bg-dark`}>
+      <body className={`${inter.variable} ${poppins.variable} antialiased bg-white`}>
         <Toaster position="top-right" />
         <Navbar />
-        <main className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12">
+        <main>
           {children}
         </main>
         <Footer />
