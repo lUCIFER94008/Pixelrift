@@ -3,8 +3,8 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { 
   ArrowRight, Sparkles, Zap, Shield, 
-  Rocket, CheckCircle2, Palette, Layout,
-  MessageSquare, User, Mail, Send, Loader2, Code2
+  Rocket, CheckCircle2, Layout,
+  MessageSquare, User, Mail, Send, Loader2, Code2, Globe, Cpu
 } from 'lucide-react';
 import Link from 'next/link';
 import Pricing from '@/components/Pricing';
@@ -13,33 +13,25 @@ import toast from 'react-hot-toast';
 
 /* ─────────────── DATA ─────────────── */
 
-const brandingServices = [
+const features = [
   {
-    icon: <Palette className="w-6 h-6" />,
-    title: "Visual Identity",
-    desc: "Unique logos and color systems that define your brand essence.",
+    icon: <Globe className="w-6 h-6" />,
+    title: "Global Scalability",
+    desc: "Infrastructure designed to handle millions of users with sub-second latency.",
     color: "primary"
   },
   {
-    icon: <Layout className="w-6 h-6" />,
-    title: "UI/UX Design",
-    desc: "Delightful interfaces built for maximum conversion and engagement.",
+    icon: <Shield className="w-6 h-6" />,
+    title: "Enterprise Security",
+    desc: "Bank-grade encryption and security protocols for your digital assets.",
     color: "secondary"
   },
   {
-    icon: <Code2 className="w-6 h-6" />,
-    title: "Web Platforms",
-    desc: "High-performance websites built with the latest technologies.",
+    icon: <Cpu className="w-6 h-6" />,
+    title: "AI-Driven UX",
+    desc: "Intelligent interfaces that adapt to user behavior in real-time.",
     color: "primary"
   }
-];
-
-const colorPalette = [
-  { name: "Soft Pink", hex: "#E6C7C7" },
-  { name: "Light Beige", hex: "#E9DED4" },
-  { name: "Cream", hex: "#F3E4CF" },
-  { name: "Peach", hex: "#E7C2A3" },
-  { name: "Text Primary", hex: "#1A1A1A" }
 ];
 
 /* ─────────────── COMPONENTS ─────────────── */
@@ -51,10 +43,10 @@ const SectionTitle = ({ subtitle, title, centered = true }) => (
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
     >
-      <span className="inline-flex items-center gap-2 px-4 py-1.5 bg-primary/10 rounded-full text-text-primary text-[10px] font-black uppercase tracking-[0.2em] mb-4">
-        <Sparkles className="w-3 h-3 text-primary" /> {subtitle}
+      <span className="inline-flex items-center gap-2 px-4 py-1.5 bg-primary/10 rounded-full text-primary text-[10px] font-black uppercase tracking-[0.2em] mb-4">
+        <Sparkles className="w-3 h-3" /> {subtitle}
       </span>
-      <h2 className="text-3xl md:text-5xl font-black text-text-primary leading-tight">
+      <h2 className="text-3xl md:text-5xl font-black text-white leading-tight">
         {title}
       </h2>
     </motion.div>
@@ -95,89 +87,117 @@ export default function LandingPage() {
   };
 
   return (
-    <div className="relative">
+    <div className="relative bg-[#0B0F19] min-h-screen overflow-x-hidden">
       {/* ══════════ 1. HERO SECTION ══════════ */}
-      <section className="relative pt-40 pb-32 md:pt-56 md:pb-48 overflow-hidden bg-hero-gradient">
-        {/* Background Blur Shapes */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <motion.div 
-            animate={{ 
-              scale: [1, 1.2, 1],
-              opacity: [0.3, 0.5, 0.3],
-              x: [0, 50, 0],
-              y: [0, 30, 0]
-            }}
-            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-primary/20 blur-[120px] rounded-full" 
-          />
-          <motion.div 
-            animate={{ 
-              scale: [1.2, 1, 1.2],
-              opacity: [0.3, 0.5, 0.3],
-              x: [0, -50, 0],
-              y: [0, -30, 0]
-            }}
-            transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-secondary/20 blur-[120px] rounded-full" 
-          />
+      <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden">
+        {/* Background Glows */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-primary/20 blur-[120px] rounded-full animate-pulse" />
+          <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-secondary/20 blur-[120px] rounded-full animate-pulse" style={{ animationDelay: '2s' }} />
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="max-w-[800px] mx-auto text-center">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            {/* Left Column */}
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
+              className="text-center lg:text-left"
             >
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/60 backdrop-blur-md rounded-full text-text-primary text-[10px] md:text-xs font-black uppercase tracking-[0.2em] mb-8 border border-white/40 shadow-sm">
-                <Zap className="w-4 h-4 text-primary animate-pulse" /> Future-Ready Digital Agency
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 backdrop-blur-md rounded-full text-white text-[10px] font-black uppercase tracking-[0.2em] mb-8 border border-white/10 shadow-xl shadow-primary/5">
+                <Zap className="w-4 h-4 text-primary animate-pulse" /> The Future of Web Engineering
               </div>
               
-              <h1 className="text-5xl md:text-8xl font-black text-text-primary leading-[1.05] mb-8 tracking-tight">
-                Build Your Business <br />
-                <span className="text-pastel-gradient">Website</span> Instantly
+              <h1 className="text-5xl md:text-7xl font-black text-white leading-[1.05] mb-8 tracking-tight">
+                Engineering <br />
+                <span className="text-accent-gradient">Digital Dominance</span>
               </h1>
               
-              <p className="text-text-secondary text-lg md:text-2xl leading-relaxed mb-12 font-medium max-w-2xl mx-auto opacity-90">
-                Premium, high-performance web solutions and branding for modern enterprises. Scalable, secure, and stunning.
+              <p className="text-gray-400 text-lg md:text-xl leading-relaxed mb-12 font-medium max-w-xl mx-auto lg:mx-0">
+                Building hyper-performance web platforms and digital ecosystems for the next generation of industry leaders.
               </p>
               
-              <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-                <Link href="/projects" className="btn-pastel px-12 py-6 rounded-2xl text-lg shadow-2xl shadow-primary/40 group w-full sm:w-auto transition-all hover:scale-105 active:scale-95">
-                  Start Building <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              <div className="flex flex-col sm:flex-row gap-6 justify-center lg:justify-start items-center">
+                <Link href="/projects" className="btn-glow px-10 py-5 rounded-2xl text-lg group w-full sm:w-auto">
+                  Explore Ecosystem <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </Link>
-                <Link href="/branding" className="btn-outline px-12 py-6 rounded-2xl text-lg shadow-lg hover:shadow-xl transition-all w-full sm:w-auto hover:bg-white/50 border-white/50 backdrop-blur-sm">
-                  Our Services
+                <Link href="/#pricing" className="btn-outline-dark px-10 py-5 rounded-2xl text-lg w-full sm:w-auto">
+                  View Plans
                 </Link>
+              </div>
+            </motion.div>
+
+            {/* Right Column - Abstract Shape */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="relative hidden lg:block"
+            >
+              <div className="relative w-full aspect-square max-w-[500px] mx-auto">
+                {/* Floating Elements */}
+                <motion.div 
+                  animate={{ 
+                    y: [0, -20, 0],
+                    rotate: [0, 5, 0]
+                  }}
+                  transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                  className="absolute inset-0 bg-gradient-to-tr from-primary/30 to-secondary/30 rounded-[3rem] blur-2xl opacity-50"
+                />
+                <div className="absolute inset-0 glass-card flex items-center justify-center p-8">
+                  <div className="relative w-full h-full border border-white/10 rounded-[2rem] overflow-hidden">
+                    <img 
+                      src="/hero_illustration.png" 
+                      alt="Future Tech" 
+                      className="w-full h-full object-cover opacity-60 brightness-50"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0B0F19] via-transparent to-transparent" />
+                  </div>
+                </div>
+
+                {/* Orbiting Icons */}
+                <motion.div 
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                  className="absolute inset-0 pointer-events-none"
+                >
+                  <div className="absolute -top-6 left-1/2 -translate-x-1/2 p-4 glass-card shadow-2xl shadow-primary/20">
+                    <Code2 className="w-8 h-8 text-primary" />
+                  </div>
+                  <div className="absolute bottom-1/2 -left-6 translate-y-1/2 p-4 glass-card shadow-2xl shadow-secondary/20">
+                    <Layout className="w-8 h-8 text-secondary" />
+                  </div>
+                </motion.div>
               </div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* ══════════ 2. BRANDING SERVICES ══════════ */}
-      <section id="services" className="py-24 bg-white">
+      {/* ══════════ 2. CORE FEATURES ══════════ */}
+      <section id="features" className="py-24 bg-[#111827]">
         <div className="max-w-7xl mx-auto px-4 md:px-8">
-          <SectionTitle subtitle="Excellence" title="Our Branding Services" />
+          <SectionTitle subtitle="Capabilities" title="Engineered for Impact" />
           
           <div className="grid md:grid-cols-3 gap-8">
-            {brandingServices.map((service, idx) => (
+            {features.map((feature, idx) => (
               <motion.div
                 key={idx}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.1 }}
-                className="pastel-card p-10 group"
+                className="glass-card p-10 group"
               >
                 <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-8 transition-all group-hover:scale-110 ${
-                  service.color === 'primary' ? 'bg-primary/10 text-primary' : 'bg-secondary/10 text-secondary'
+                  feature.color === 'primary' ? 'bg-primary/10 text-primary' : 'bg-secondary/10 text-secondary'
                 }`}>
-                  {service.icon}
+                  {feature.icon}
                 </div>
-                <h3 className="text-xl font-black text-text-primary mb-4">{service.title}</h3>
-                <p className="text-text-secondary text-sm leading-relaxed font-bold">
-                  {service.desc}
+                <h3 className="text-xl font-black text-white mb-4">{feature.title}</h3>
+                <p className="text-gray-400 text-sm leading-relaxed font-medium">
+                  {feature.desc}
                 </p>
               </motion.div>
             ))}
@@ -185,93 +205,67 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* ══════════ 3. COLOR PALETTE ══════════ */}
-      <section className="py-24 bg-[#fcfcfc] border-y border-gray-100">
+      {/* ══════════ 3. PRICING ══════════ */}
+      <section id="pricing" className="py-32 bg-[#0B0F19]">
         <div className="max-w-7xl mx-auto px-4 md:px-8">
-          <SectionTitle subtitle="Design Systems" title="Curated Brand Aesthetics" />
-          
-          <div className="flex flex-col md:flex-row items-center gap-6 overflow-x-auto pb-4 no-scrollbar">
-            {colorPalette.map((item, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                className="min-w-[280px] md:min-w-[220px] bg-white p-6 rounded-3xl border border-gray-100 shadow-sm flex items-center gap-4 group"
-              >
-                <div 
-                  className="w-12 h-12 rounded-xl shadow-inner border border-gray-100" 
-                  style={{ background: item.hex }} 
-                />
-                <div>
-                  <h4 className="text-text-primary font-bold text-sm mb-1">{item.name}</h4>
-                  <p className="text-gray-400 text-[10px] font-mono font-bold uppercase tracking-widest">{item.hex}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ══════════ 4. PRICING ══════════ */}
-      <section id="pricing" className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 md:px-8">
-          <SectionTitle subtitle="Value" title="Enterprise Ready Plans" />
+          <SectionTitle subtitle="Value" title="Strategic Growth Plans" />
           <Pricing />
         </div>
       </section>
 
-      {/* ══════════ 5. CONTACT FORM ══════════ */}
-      <section id="contact" className="py-24 bg-[#f8f8f8] border-t border-gray-100">
-        <div className="max-w-4xl mx-auto px-4 md:px-8">
-          <SectionTitle subtitle="Connect" title="Start Your Digital Journey" />
+      {/* ══════════ 4. CONTACT FORM ══════════ */}
+      <section id="contact" className="py-32 bg-[#111827] relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-[40%] h-[40%] bg-primary/10 blur-[100px] rounded-full pointer-events-none" />
+        
+        <div className="max-w-4xl mx-auto px-4 md:px-8 relative z-10">
+          <SectionTitle subtitle="Connect" title="Initiate Deployment" />
           
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="bg-white rounded-px-lg p-8 md:p-16 shadow-2xl shadow-dark/5 border border-gray-100"
+            className="glass-card p-8 md:p-16 border-white/5"
           >
             {submitted ? (
               <div className="text-center py-12">
-                <div className="w-20 h-20 bg-emerald-50 rounded-full flex items-center justify-center mx-auto mb-6">
+                <div className="w-20 h-20 bg-emerald-500/10 rounded-full flex items-center justify-center mx-auto mb-6">
                   <CheckCircle2 className="w-10 h-10 text-emerald-500" />
                 </div>
-                <h3 className="text-3xl font-black text-text-primary mb-4">Request Received!</h3>
-                <p className="text-text-secondary font-bold">We&apos;ll be in touch within 24 hours.</p>
+                <h3 className="text-3xl font-black text-white mb-4">Request Transmitted</h3>
+                <p className="text-gray-400 font-medium">Our engineers will analyze your requirements within 24 hours.</p>
                 <button 
                   onClick={() => setSubmitted(false)}
-                  className="mt-8 text-primary text-xs font-black uppercase tracking-widest hover:text-text-primary transition-colors"
+                  className="mt-8 text-primary text-xs font-black uppercase tracking-widest hover:text-white transition-colors"
                 >
-                  Send Another Message →
+                  Send Another Transmission →
                 </button>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-8">
                 <div className="grid md:grid-cols-2 gap-8">
                   <div className="space-y-3">
-                    <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest px-2">Full Name</label>
+                    <label className="text-[10px] font-black text-gray-500 uppercase tracking-widest px-2">Full Name</label>
                     <div className="relative">
-                      <User className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-300" />
+                      <User className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-600" />
                       <input 
                         required
                         type="text" 
                         placeholder="John Doe"
-                        className="pastel-input pl-12"
+                        className="dark-input pl-12"
                         value={formData.name}
                         onChange={(e) => setFormData({...formData, name: e.target.value})}
                       />
                     </div>
                   </div>
                   <div className="space-y-3">
-                    <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest px-2">Email Address</label>
+                    <label className="text-[10px] font-black text-gray-500 uppercase tracking-widest px-2">Email Address</label>
                     <div className="relative">
-                      <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-300" />
+                      <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-600" />
                       <input 
                         required
                         type="email" 
                         placeholder="john@example.com"
-                        className="pastel-input pl-12"
+                        className="dark-input pl-12"
                         value={formData.email}
                         onChange={(e) => setFormData({...formData, email: e.target.value})}
                       />
@@ -280,13 +274,13 @@ export default function LandingPage() {
                 </div>
                 
                 <div className="space-y-3">
-                  <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest px-2">Message</label>
+                  <label className="text-[10px] font-black text-gray-500 uppercase tracking-widest px-2">Message</label>
                   <div className="relative">
-                    <MessageSquare className="absolute left-4 top-6 w-4 h-4 text-gray-300" />
+                    <MessageSquare className="absolute left-4 top-6 w-4 h-4 text-gray-600" />
                     <textarea 
                       required
-                      placeholder="Tell us about your project vision..."
-                      className="pastel-input pl-12 min-h-[160px] resize-none"
+                      placeholder="Detail your project vision..."
+                      className="dark-input pl-12 min-h-[160px] resize-none"
                       value={formData.message}
                       onChange={(e) => setFormData({...formData, message: e.target.value})}
                     />
@@ -296,12 +290,12 @@ export default function LandingPage() {
                 <button 
                   type="submit" 
                   disabled={loading}
-                  className="btn-pastel w-full py-5 text-xs uppercase tracking-widest shadow-xl shadow-primary/20 disabled:opacity-50"
+                  className="btn-glow w-full py-5 text-xs uppercase tracking-widest disabled:opacity-50"
                 >
                   {loading ? (
                     <><Loader2 className="w-5 h-5 animate-spin" /> Processing...</>
                   ) : (
-                    <><Send className="w-5 h-5" /> Send Branding Request</>
+                    <><Send className="w-5 h-5" /> Launch Project Inquiry</>
                   )}
                 </button>
               </form>

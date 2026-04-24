@@ -8,7 +8,7 @@ const plans = [
   {
     name: "Starter",
     price: "4,999",
-    tagline: "Perfect for startups",
+    tagline: "Essential Presence",
     icon: <Zap className="w-5 h-5" />,
     features: ["Custom Landing Page", "Mobile Responsive", "Basic SEO", "1 Month Support"],
     highlight: false,
@@ -16,17 +16,17 @@ const plans = [
   {
     name: "Business",
     price: "12,999",
-    tagline: "Most popular choice",
+    tagline: "Market Dominance",
     icon: <Briefcase className="w-5 h-5" />,
-    features: ["Multi-page Website", "Advanced Animations", "Contact Form + CRM", "Priority Support", "Email Marketing"],
+    features: ["Multi-page Platform", "Advanced Animations", "Contact Form + CRM", "Priority Support", "AI Integration"],
     highlight: true,
   },
   {
     name: "Enterprise",
     price: "24,999",
-    tagline: "Built for scale",
+    tagline: "Infinite Scale",
     icon: <Crown className="w-5 h-5" />,
-    features: ["Custom Web App", "Database Integration", "User Auth System", "Admin Dashboard", "Lifetime Support"],
+    features: ["Custom Web App", "Database Architecture", "User Auth System", "Admin Control Panel", "24/7 Priority Support"],
     highlight: false,
   }
 ];
@@ -41,36 +41,36 @@ const Pricing = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: idx * 0.1 }}
-          className={`relative p-10 rounded-px-lg transition-all duration-500 flex flex-col h-full ${
+          className={`relative p-10 glass-card flex flex-col h-full ${
             plan.highlight 
-            ? 'bg-hero-gradient shadow-2xl shadow-primary/10 scale-105 z-10 border border-primary/20' 
-            : 'bg-white border border-gray-100 shadow-xl shadow-dark/5 hover:border-gray-200'
+            ? 'border-primary/50 shadow-2xl shadow-primary/20 scale-105 z-10 bg-white/[0.05]' 
+            : 'border-white/10 hover:border-white/20'
           }`}
         >
           {plan.highlight && (
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 bg-white px-4 py-1.5 rounded-b-xl text-[8px] font-black uppercase tracking-widest text-primary border border-t-0 border-primary/20 shadow-sm">
-              Best Value
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 bg-primary px-4 py-1.5 rounded-b-xl text-[8px] font-black uppercase tracking-widest text-white shadow-lg">
+              Most Advanced
             </div>
           )}
 
           <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-8 ${
-            plan.highlight ? 'bg-white text-primary shadow-sm' : 'bg-primary/10 text-primary'
+            plan.highlight ? 'bg-primary text-white shadow-xl shadow-primary/40' : 'bg-primary/10 text-primary'
           }`}>
             {plan.icon}
           </div>
 
-          <h3 className="text-2xl font-black text-text-primary mb-2">{plan.name}</h3>
-          <p className="text-text-secondary text-xs font-bold uppercase tracking-widest mb-8">{plan.tagline}</p>
+          <h3 className="text-2xl font-black text-white mb-2">{plan.name}</h3>
+          <p className="text-gray-400 text-[10px] font-black uppercase tracking-widest mb-8 opacity-80">{plan.tagline}</p>
 
           <div className="flex items-baseline gap-1 mb-8">
-            <span className="text-4xl font-black text-text-primary">₹{plan.price}</span>
-            <span className="text-text-secondary text-xs font-bold uppercase tracking-widest">/ Project</span>
+            <span className="text-4xl font-black text-white">₹{plan.price}</span>
+            <span className="text-gray-500 text-[10px] font-black uppercase tracking-widest ml-2">/ Launch</span>
           </div>
 
           <ul className="space-y-4 mb-12 flex-1">
             {plan.features.map((feature, i) => (
-              <li key={i} className="flex items-center gap-3 text-text-secondary text-sm font-bold">
-                <CheckCircle2 className={`w-4 h-4 shrink-0 ${plan.highlight ? 'text-white' : 'text-primary'}`} />
+              <li key={i} className="flex items-center gap-3 text-gray-400 text-sm font-medium">
+                <CheckCircle2 className={`w-4 h-4 shrink-0 ${plan.highlight ? 'text-primary' : 'text-primary/60'}`} />
                 {feature}
               </li>
             ))}
@@ -78,13 +78,13 @@ const Pricing = () => {
 
           <Link 
             href="/projects" 
-            className={`w-full py-4 rounded-xl text-xs font-black uppercase tracking-widest transition-all flex items-center justify-center gap-2 ${
+            className={`w-full py-4 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all flex items-center justify-center gap-2 ${
               plan.highlight 
-              ? 'bg-white text-text-primary shadow-lg hover:bg-gray-50' 
-              : 'btn-pastel shadow-lg shadow-primary/10'
+              ? 'btn-glow shadow-xl shadow-primary/20' 
+              : 'btn-outline-dark'
             }`}
           >
-            Choose Plan <ArrowRight className="w-4 h-4" />
+            Deploy Plan <ArrowRight className="w-4 h-4" />
           </Link>
         </motion.div>
       ))}
