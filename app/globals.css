@@ -104,7 +104,7 @@
 
   /* Hero Gradient */
   .bg-hero-gradient {
-    background: linear-gradient(180deg, #F3E4CF 0%, #E9DED4 100%);
+    background: linear-gradient(180deg, #F3E4CF 0%, #E9DED4 50%, #E7C2A3 100%);
   }
 
   @keyframes marquee {

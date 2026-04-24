@@ -97,65 +97,59 @@ export default function LandingPage() {
   return (
     <div className="relative">
       {/* ══════════ 1. HERO SECTION ══════════ */}
-      <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden bg-hero-gradient">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            {/* Left Column */}
+      <section className="relative pt-40 pb-32 md:pt-56 md:pb-48 overflow-hidden bg-hero-gradient">
+        {/* Background Blur Shapes */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <motion.div 
+            animate={{ 
+              scale: [1, 1.2, 1],
+              opacity: [0.3, 0.5, 0.3],
+              x: [0, 50, 0],
+              y: [0, 30, 0]
+            }}
+            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-primary/20 blur-[120px] rounded-full" 
+          />
+          <motion.div 
+            animate={{ 
+              scale: [1.2, 1, 1.2],
+              opacity: [0.3, 0.5, 0.3],
+              x: [0, -50, 0],
+              y: [0, -30, 0]
+            }}
+            transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-secondary/20 blur-[120px] rounded-full" 
+          />
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="max-w-[800px] mx-auto text-center">
             <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="text-center lg:text-left"
             >
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/50 backdrop-blur-sm rounded-full text-text-primary text-xs font-bold uppercase tracking-widest mb-8 border border-white/20">
-                <Zap className="w-4 h-4 text-primary" /> Future-Ready Digital Agency
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/60 backdrop-blur-md rounded-full text-text-primary text-[10px] md:text-xs font-black uppercase tracking-[0.2em] mb-8 border border-white/40 shadow-sm">
+                <Zap className="w-4 h-4 text-primary animate-pulse" /> Future-Ready Digital Agency
               </div>
-              <h1 className="text-5xl md:text-7xl font-black text-text-primary leading-[1.1] mb-8">
+              
+              <h1 className="text-5xl md:text-8xl font-black text-text-primary leading-[1.05] mb-8 tracking-tight">
                 Build Your Business <br />
-                <span className="text-pastel-gradient">Website Instantly</span>
+                <span className="text-pastel-gradient">Website</span> Instantly
               </h1>
-              <p className="text-text-secondary text-lg md:text-xl leading-relaxed mb-12 max-w-xl mx-auto lg:mx-0 font-medium">
+              
+              <p className="text-text-secondary text-lg md:text-2xl leading-relaxed mb-12 font-medium max-w-2xl mx-auto opacity-90">
                 Premium, high-performance web solutions and branding for modern enterprises. Scalable, secure, and stunning.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                <Link href="/projects" className="btn-pastel px-10 py-5 rounded-2xl text-lg shadow-xl shadow-primary/20 group">
-                  Start Building <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              
+              <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+                <Link href="/projects" className="btn-pastel px-12 py-6 rounded-2xl text-lg shadow-2xl shadow-primary/40 group w-full sm:w-auto transition-all hover:scale-105 active:scale-95">
+                  Start Building <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </Link>
-                <Link href="/branding" className="btn-outline px-10 py-5 rounded-2xl text-lg">
+                <Link href="/branding" className="btn-outline px-12 py-6 rounded-2xl text-lg shadow-lg hover:shadow-xl transition-all w-full sm:w-auto hover:bg-white/50 border-white/50 backdrop-blur-sm">
                   Our Services
                 </Link>
               </div>
-            </motion.div>
-
-            {/* Right Column */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="relative hidden lg:block"
-            >
-              <div className="bg-white p-4 rounded-px-lg shadow-2xl shadow-dark/5 border border-white/50">
-                <img 
-                  src="/hero_illustration.png" 
-                  alt="Pixelrift Hero" 
-                  className="w-full h-auto rounded-[2rem] object-cover"
-                />
-              </div>
-              {/* Floating elements */}
-              <motion.div 
-                animate={{ y: [0, -10, 0] }} 
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -top-10 -right-10 bg-white p-6 rounded-3xl shadow-xl"
-              >
-                 <Rocket className="w-8 h-8 text-primary" />
-              </motion.div>
-              <motion.div 
-                animate={{ y: [0, 10, 0] }} 
-                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -bottom-10 -left-10 bg-white p-6 rounded-3xl shadow-xl"
-              >
-                 <Shield className="w-8 h-8 text-secondary" />
-              </motion.div>
             </motion.div>
           </div>
         </div>
